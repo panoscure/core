@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.intralot.qa.automation</groupId>
-    <artifactId>automation-core-framework</artifactId>
+    <artifactId>ilottery-natives-dc-core</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
