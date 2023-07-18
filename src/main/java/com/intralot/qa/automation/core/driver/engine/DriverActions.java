@@ -258,7 +258,7 @@ public class DriverActions {
     }
 
     // W3C Scroll To Element
-    public void scrollToElement(AppiumDriver appiumDriver, ScrollType scrollType, WebElement mobileElement) {
+    public static void scrollToElement(AppiumDriver appiumDriver, ScrollType scrollType, WebElement mobileElement) {
         int center = 0;
         double start = 0;
         double end = 0;
