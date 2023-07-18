@@ -335,6 +335,21 @@ public class DriverActions {
         */
     }
 
+    public static void swipeToElement(WebDriver webdriver, String locator, ScrollDirection direction){
+        Log.info("swipeToElement():" + locator + " with direction: " + direction.toString());
+
+        int count = 0;
+
+        while((!DriverCheck.isElementByVisible(webdriver,locator,5L)) && count < 15) {
+            DriverActions.scroll((AppiumDriver) webdriver, direction, 0.45);
+            count++;
+        }
+
+        if (count==14){
+            Log.error("swipeToElement(): element not visible after 15 swipes");
+        }
+    }
+
     // Take a screenshot
     public static String takeScreenshot(WebDriver webDriver, String fileName) throws IOException {
 
