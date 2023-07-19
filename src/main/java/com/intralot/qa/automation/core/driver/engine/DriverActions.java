@@ -375,7 +375,7 @@ public class DriverActions {
     }
 
     //Swipe by elements (webelements)
-    public void swipeByElements (WebDriver driver, WebElement startElement, WebElement endElement) {
+    public static void swipeByElements (WebDriver driver, WebElement startElement, WebElement endElement) {
         int startX = startElement.getLocation().getX() + (startElement.getSize().getWidth() / 2);
         int startY = startElement.getLocation().getY() + (startElement.getSize().getHeight() / 2);
         int endX = endElement.getLocation().getX() + (endElement.getSize().getWidth() / 2);
@@ -388,7 +388,7 @@ public class DriverActions {
     }
 
     //Swipe by elements (locators)
-    public void swipeByElements (WebDriver driver, String startLocator, String endLocator) {
+    public static void swipeByElements (WebDriver driver, String startLocator, String endLocator) {
 
         WebElement startElement = DriverFind.getElementBy(driver, startLocator);
         WebElement endElement = DriverFind.getElementBy(driver, endLocator);
