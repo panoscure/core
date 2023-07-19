@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.intralot.qa.automation.core.utilities.CustomProperties;
 import com.intralot.qa.automation.core.utilities.HelperUtilities;
 import com.intralot.qa.automation.core.utilities.Log;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.remote.SupportsContextSwitching;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -349,6 +350,25 @@ public class DriverActions {
             Log.error("swipeToElement(): element not visible after 15 swipes");
         }
     }
+
+    public static void scrollToElementUsingResourceIdMatch(WebDriver driver, String resourceIdKeyword) {
+        driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().resourceIdMatches(\""
+                        + resourceIdKeyword + "\").instance(0))"));
+    }
+
+    public static void scrollToElementUsingExactTextMatch(WebDriver driver, String keyword) {
+        driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"" + keyword
+                        + "\"))"));
+    }
+
+    public static void scrollToElementUsingContainsTextMatch(WebDriver driver, String keyword) {
+        driver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"" + keyword
+                        + "\").instance(0))"));
+    }
+
 
     // Take a screenshot
     public static String takeScreenshot(WebDriver webDriver, String fileName) throws IOException {
