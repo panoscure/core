@@ -6,6 +6,8 @@ import com.intralot.qa.automation.core.utilities.CustomProperties;
 import com.intralot.qa.automation.core.utilities.HelperUtilities;
 import com.intralot.qa.automation.core.utilities.Log;
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.PerformsTouchActions;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.remote.SupportsContextSwitching;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -30,6 +32,9 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class DriverActions {
@@ -44,7 +49,7 @@ public class DriverActions {
 
     public static Dimension windowSize;
 
-    private static Duration SCROLL_DUR = Duration.ofMillis(1000);
+    private static Duration SCROLL_DUR = ofMillis(1000);
 
     private static double SCROLL_RATIO = 0.8;
 
@@ -243,7 +248,7 @@ public class DriverActions {
         Sequence tap = new Sequence(input, 0);
         tap.addAction(input.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), point.x, point.y));
         tap.addAction(input.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-        tap.addAction(new Pause(input, Duration.ofMillis(200)));
+        tap.addAction(new Pause(input, ofMillis(200)));
         tap.addAction(input.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         appiumDriver.perform(ImmutableList.of(tap));
     }
@@ -317,9 +322,9 @@ public class DriverActions {
          */
 
         if (scrollType == ScrollType.VERTICAL)
-            swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), center, (int) end));
+            swipe.addAction(finger.createPointerMove(ofMillis(700), PointerInput.Origin.viewport(), center, (int) end));
         else if (scrollType == ScrollType.HORIZONTAL)
-            swipe.addAction(finger.createPointerMove(Duration.ofMillis(700), PointerInput.Origin.viewport(), (int) end, center));
+            swipe.addAction(finger.createPointerMove(ofMillis(700), PointerInput.Origin.viewport(), (int) end, center));
 
         // Release finger from Screen
         swipe.addAction(finger.createPointerUp(0));
@@ -369,6 +374,35 @@ public class DriverActions {
                         + "\").instance(0))"));
     }
 
+    //Swipe by elements (webelements)
+    public void swipeByElements (WebDriver driver, WebElement startElement, WebElement endElement) {
+        int startX = startElement.getLocation().getX() + (startElement.getSize().getWidth() / 2);
+        int startY = startElement.getLocation().getY() + (startElement.getSize().getHeight() / 2);
+        int endX = endElement.getLocation().getX() + (endElement.getSize().getWidth() / 2);
+        int endY = endElement.getLocation().getY() + (endElement.getSize().getHeight() / 2);
+        new TouchAction((PerformsTouchActions) driver)
+                .press(point(startX,startY))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(endX, endY))
+                .release().perform();
+    }
+
+    //Swipe by elements (locators)
+    public void swipeByElements (WebDriver driver, String startLocator, String endLocator) {
+
+        WebElement startElement = DriverFind.getElementBy(driver, startLocator);
+        WebElement endElement = DriverFind.getElementBy(driver, endLocator);
+
+        int startX = startElement.getLocation().getX() + (startElement.getSize().getWidth() / 2);
+        int startY = startElement.getLocation().getY() + (startElement.getSize().getHeight() / 2);
+        int endX = endElement.getLocation().getX() + (endElement.getSize().getWidth() / 2);
+        int endY = endElement.getLocation().getY() + (endElement.getSize().getHeight() / 2);
+        new TouchAction((PerformsTouchActions) driver)
+                .press(point(startX,startY))
+                .waitAction(waitOptions(ofMillis(1000)))
+                .moveTo(point(endX, endY))
+                .release().perform();
+    }
 
     // Take a screenshot
     public static String takeScreenshot(WebDriver webDriver, String fileName) throws IOException {
