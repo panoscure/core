@@ -1,19 +1,25 @@
 package com.intralot.qa.automation.core.utilities;
 
+import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.Minutes;
 import org.joda.time.Months;
 import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 
 public class DateUtilities {
 
@@ -112,26 +118,26 @@ public class DateUtilities {
         return dateTime.toString("dd/MM/yy HH:mm");
     }
 
-    public static DateTime parseDateWithStringMonthToDate(String dateWithStringMonth) {
-
-        List<String> enMonthsList = Arrays.asList("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
-        List<String> grMonthsList = Arrays.asList("Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαι", "Ιουν", "Ιουλ", "Αυγ", "Σεπτ", "Οκτ", "Νοε", "Δεκ");
-
-        for (int i = 0; i < 12; i++) {
-
-            if (dateWithStringMonth.contains(grMonthsList.get(i))) {
-
-                dateWithStringMonth = dateWithStringMonth.replace(grMonthsList.get(i), enMonthsList.get(i));
-                System.out.println(dateWithStringMonth);
-                break;
-
-            }
-        }
-
-        DateTimeFormatter format = DateTimeFormat.forPattern("dd MMM yyyy HH:mm:ss");
-
-        return format.parseDateTime(dateWithStringMonth);
-    }
+//    public static DateTime parseDateWithStringMonthToDate(String dateWithStringMonth) {
+//
+//        List<String> enMonthsList = Arrays.asList("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+//        List<String> grMonthsList = Arrays.asList("Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαι", "Ιουν", "Ιουλ", "Αυγ", "Σεπτ", "Οκτ", "Νοε", "Δεκ");
+//
+//        for (int i = 0; i < 12; i++) {
+//
+//            if (dateWithStringMonth.contains(grMonthsList.get(i))) {
+//
+//                dateWithStringMonth = dateWithStringMonth.replace(grMonthsList.get(i), enMonthsList.get(i));
+//                System.out.println(dateWithStringMonth);
+//                break;
+//
+//            }
+//        }
+//
+//        DateTimeFormatter format = DateTimeFormat.forPattern("dd MMM yyyy HH:mm:ss");
+//
+//        return format.parseDateTime(dateWithStringMonth);
+//    }
 
     public static String removeLeadingZeros(String number) {
         return number.startsWith("0") ? number.substring(1) : number;
@@ -194,5 +200,26 @@ public class DateUtilities {
                 .replace("Tomorrow", tomorrow);
         return parseStringToDate(dateString, "dd/MM/yyyy HH:mm");
     }
+
+    public static LocalDateTime epocToLocalDateTime(Long epocDate){
+
+        LocalDateTime ldt = Instant.ofEpochMilli(epocDate)
+                .atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+        Log.info("LocalDateTime:" + ldt);
+
+        return ldt;
+    }
+
+    public static String dateToUSformat (LocalDateTime ldt){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+        String formattedDateTime = ldt.format(formatter);
+
+        Log.info("US Formatted DateTime:" + formattedDateTime);
+
+        return formattedDateTime;
+    }
+
 
 }
