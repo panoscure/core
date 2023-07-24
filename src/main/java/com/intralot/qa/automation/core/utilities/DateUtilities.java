@@ -8,12 +8,10 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -206,7 +204,17 @@ public class DateUtilities {
         LocalDateTime ldt = Instant.ofEpochMilli(epocDate)
                 .atZone(ZoneId.systemDefault()).toLocalDateTime();
 
-        Log.info("LocalDateTime:" + ldt);
+        Log.info("epocToLocalDateTime(): LocalDateTime:" + ldt);
+
+        return ldt;
+    }
+
+    public static LocalDateTime epocToDateTime(Long epocDate, String timeZone){
+
+        LocalDateTime ldt = Instant.ofEpochMilli(epocDate)
+                .atZone(ZoneId.of(timeZone)).toLocalDateTime();
+
+        Log.info("epocToDateTime(): LocalDateTime in zone: " + timeZone + " is:" + ldt);
 
         return ldt;
     }
