@@ -356,6 +356,21 @@ public class DriverActions {
         }
     }
 
+    public static void swipeToElement(WebDriver webdriver, String locator, ScrollDirection direction, double distance){
+        Log.info("swipeToElement():" + locator + " with direction: " + direction.toString() + " and distance:" + distance);
+
+        int count = 0;
+
+        while((!DriverCheck.isElementByVisible(webdriver,locator,5L)) && count < 15) {
+            DriverActions.scroll((AppiumDriver) webdriver, direction, distance);
+            count++;
+        }
+
+        if (count==14){
+            Log.error("swipeToElement(): element not visible after 15 swipes");
+        }
+    }
+
     public static void scrollToElementUsingResourceIdMatch(WebDriver driver, String resourceIdKeyword) {
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().resourceIdMatches(\""

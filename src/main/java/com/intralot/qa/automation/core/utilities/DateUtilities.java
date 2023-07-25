@@ -219,15 +219,22 @@ public class DateUtilities {
         return ldt;
     }
 
-    public static String dateToUSformat (LocalDateTime ldt){
+    public static String dateToUSformat (LocalDateTime ldt, boolean stripZeros){
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+        DateTimeFormatter formatter;
+
+        if (stripZeros){
+            formatter = DateTimeFormatter.ofPattern("M/d/yyyy hh:mm a");
+        }
+        else {
+            formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+        }
+
         String formattedDateTime = ldt.format(formatter);
 
         Log.info("US Formatted DateTime:" + formattedDateTime);
 
         return formattedDateTime;
     }
-
 
 }
