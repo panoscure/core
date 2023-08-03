@@ -8,6 +8,8 @@ import com.intralot.qa.automation.core.utilities.Log;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.remote.SupportsContextSwitching;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -576,6 +578,18 @@ public class DriverActions {
             element.sendKeys("");
         } else {
             new Actions(driver).moveToElement(element).perform();
+        }
+    }
+
+    public static void clearTextboxAndroid(AndroidDriver driver, String locator) {
+        WebElement element = DriverWait.forVisibilityOfElementBy(driver, locator, null);
+
+        element.click();
+
+        int stringLenght = element.getText().length();
+
+        for (int i = 0; i < stringLenght; i++) {
+            driver.pressKey(new KeyEvent(AndroidKey.BACK));
         }
     }
 
