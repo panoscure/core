@@ -10,6 +10,7 @@ import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.android.nativekey.PressesKey;
 import io.appium.java_client.remote.SupportsContextSwitching;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
@@ -612,5 +613,216 @@ public class DriverActions {
         driver.switchTo().window(lastWindowHandle).close();
         Log.info("Closed last window");
         DriverActions.switchToLastWindow(driver);
+    }
+
+    public static void sendAlphanumericCharsOnAndroid(AppiumDriver appiumDriver, String chars, String locator) {
+
+        KeyEvent testKey = null;
+
+        Log.info("sendDigitKeys for amount: " + chars);
+
+        //In case of Edit, delete existing entry first
+        if (locator!=null) {
+
+            String existingValue = DriverWait.forPresenceOfElementBy(appiumDriver, locator,null).getText();
+            if (existingValue==null) {
+                existingValue = DriverWait.forPresenceOfElementBy(appiumDriver, locator,null).getAttribute("text");
+            }
+
+            int length = existingValue.length();
+
+            if (length > 0) {
+                Log.info("sendDigitKeys: amount already exists with length:" + length + " Delete input first");
+            }
+            while (length > 0) {
+                ((PressesKey) appiumDriver).pressKey(new KeyEvent(AndroidKey.DEL));
+                length--;
+            }
+        }
+
+        for (int i = 0; i < chars.length(); i++) {
+
+            Log.info("digit no:"+ i +" is:" + chars.charAt(i));
+
+            switch (chars.charAt(i)) {
+                case '0':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_0);
+                    break;
+                case '1':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_1);
+                    break;
+                case '2':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_2);
+                    break;
+                case '3':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_3);
+                    break;
+                case '4':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_4);
+                    break;
+                case '5':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_5);
+                    break;
+                case '6':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_6);
+                    break;
+                case '7':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_7);
+                    break;
+                case '8':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_8);
+                    break;
+                case '9':
+                    testKey=new KeyEvent(AndroidKey.DIGIT_9);
+                    break;
+                case 'A':
+                case 'a':
+                    testKey=new KeyEvent(AndroidKey.A);
+                    break;
+                case 'B':
+                case 'b':
+                    testKey=new KeyEvent(AndroidKey.B);
+                    break;
+                case 'C':
+                case 'c':
+                    testKey=new KeyEvent(AndroidKey.C);
+                    break;
+                case 'D':
+                case 'd':
+                    testKey=new KeyEvent(AndroidKey.D);
+                    break;
+                case 'E':
+                case 'e':
+                    testKey=new KeyEvent(AndroidKey.E);
+                    break;
+                case 'F':
+                case 'f':
+                    testKey=new KeyEvent(AndroidKey.F);
+                    break;
+                case 'G':
+                case 'g':
+                    testKey=new KeyEvent(AndroidKey.G);
+                    break;
+                case 'H':
+                case 'h':
+                    testKey=new KeyEvent(AndroidKey.H);
+                    break;
+                case 'I':
+                case 'i':
+                    testKey=new KeyEvent(AndroidKey.I);
+                    break;
+                case 'J':
+                case 'j':
+                    testKey=new KeyEvent(AndroidKey.J);
+                    break;
+                case 'K':
+                case 'k':
+                    testKey=new KeyEvent(AndroidKey.K);
+                    break;
+                case 'L':
+                case 'l':
+                    testKey=new KeyEvent(AndroidKey.L);
+                    break;
+                case 'M':
+                case 'm':
+                    testKey=new KeyEvent(AndroidKey.M);
+                    break;
+                case 'N':
+                case 'n':
+                    testKey=new KeyEvent(AndroidKey.N);
+                    break;
+                case 'O':
+                case 'o':
+                    testKey=new KeyEvent(AndroidKey.O);
+                    break;
+                case 'P':
+                case 'p':
+                    testKey=new KeyEvent(AndroidKey.P);
+                    break;
+                case 'Q':
+                case 'q':
+                    testKey=new KeyEvent(AndroidKey.Q);
+                    break;
+                case 'R':
+                case 'r':
+                    testKey=new KeyEvent(AndroidKey.R);
+                    break;
+                case 'S':
+                case 's':
+                    testKey=new KeyEvent(AndroidKey.S);
+                    break;
+                case 'T':
+                case 't':
+                    testKey=new KeyEvent(AndroidKey.T);
+                    break;
+                case 'U':
+                case 'u':
+                    testKey=new KeyEvent(AndroidKey.U);
+                    break;
+                case 'V':
+                case 'v':
+                    testKey=new KeyEvent(AndroidKey.V);
+                    break;
+                case 'W':
+                case 'w':
+                    testKey=new KeyEvent(AndroidKey.W);
+                    break;
+                case 'X':
+                case 'x':
+                    testKey=new KeyEvent(AndroidKey.X);
+                    break;
+                case 'Y':
+                case 'y':
+                    testKey=new KeyEvent(AndroidKey.Y);
+                    break;
+                case 'Z':
+                case 'z':
+                    testKey=new KeyEvent(AndroidKey.Z);
+                    break;
+                case ' ':
+                    testKey=new KeyEvent(AndroidKey.SPACE);
+                    break;
+                case '+':
+                    testKey=new KeyEvent(AndroidKey.PLUS);
+                    break;
+                case '-':
+                    testKey=new KeyEvent(AndroidKey.MINUS);
+                    break;
+                case '\'':
+                    testKey=new KeyEvent(AndroidKey.APOSTROPHE);
+                    break;
+                case ',':
+                    testKey=new KeyEvent(AndroidKey.COMMA);
+                    break;
+                case '{':
+                    testKey=new KeyEvent(AndroidKey.LEFT_BRACKET);
+                    break;
+                case '}':
+                    testKey=new KeyEvent(AndroidKey.RIGHT_BRACKET);
+                    break;
+                case '\\':
+                    testKey=new KeyEvent(AndroidKey.BACKSLASH);
+                    break;
+                case '/':
+                    testKey=new KeyEvent(AndroidKey.SLASH);
+                    break;
+                case '.':
+                    testKey=new KeyEvent(AndroidKey.PERIOD);
+                    break;
+                case ';':
+                    testKey=new KeyEvent(AndroidKey.SEMICOLON);
+                    break;
+                case '*':
+                    testKey=new KeyEvent(AndroidKey.STAR);
+                    break;
+                case '@':
+                    testKey=new KeyEvent(AndroidKey.AT);
+                    break;
+                default:
+                    break;
+            }
+
+            ((PressesKey) appiumDriver).pressKey(testKey);
+        }
     }
 }
