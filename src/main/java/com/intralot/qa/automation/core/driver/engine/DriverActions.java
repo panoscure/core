@@ -825,4 +825,12 @@ public class DriverActions {
             ((PressesKey) appiumDriver).pressKey(testKey);
         }
     }
+
+    public static void androidSelectFromDropDownList(WebDriver driver, String keyword) {
+        driver.findElement(AppiumBy.androidUIAutomator(
+                        "new UiScrollable(new UiSelector().className(\"android.widget.ListView\")).getChildByText(new UiSelector().className(\"android.widget.CheckedTextView\"), \""
+                                + keyword + "\")"))
+                .click();
+    }
+
 }
