@@ -828,7 +828,7 @@ public class DriverActions {
 
     public static void androidSelectFromDropDownList(WebDriver driver, String keyword) {
         driver.findElement(AppiumBy.androidUIAutomator(
-                        "new UiScrollable(new UiSelector().className(\"android.widget.ListView\")).getChildByText(new UiSelector().className(\"android.widget.CheckedTextView\"), \""
+                        "new UiScrollable(new UiSelector().className(\"android.widget.ScrollView\")).getChildByText(new UiSelector().className(\"android.widget.TextView\"), \""
                                 + keyword + "\")"))
                 .click();
     }
