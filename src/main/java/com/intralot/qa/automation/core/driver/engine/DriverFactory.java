@@ -12,8 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.*;
-import org.openqa.selenium.devtools.v112.emulation.Emulation;
-import org.openqa.selenium.devtools.v112.security.Security;
+import org.openqa.selenium.devtools.v115.emulation.Emulation;
+import org.openqa.selenium.devtools.v115.security.Security;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
