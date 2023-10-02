@@ -456,6 +456,12 @@ public class DriverActions {
         Log.info("Element with locator: " + locator + " was clicked.");
     }
 
+    public static void clickElement(WebDriver driver, By by, Long customTimeOut) {
+        final Long timeOut = CustomProperties.getTimeOutValue(customTimeOut);
+        DriverWait.forPresenceOfElementBy(driver, by, timeOut).click();
+        Log.info("Element with locator: " + by + " was clicked.");
+    }
+
     public static void clickElement(WebDriver driver, WebElement element, Long customTimeOut) {
         final Long timeOut = CustomProperties.getTimeOutValue(customTimeOut);
         DriverWait.forElementToBeClickable(driver, element, timeOut).click();

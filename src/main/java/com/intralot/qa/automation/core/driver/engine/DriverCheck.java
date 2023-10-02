@@ -114,4 +114,13 @@ public class DriverCheck {
             return false;
         }
     }
+
+    public static boolean isElementByVisible(WebDriver webDriver, By by, Long timeOut) {
+        try {
+            DriverWait.forVisibilityOfElementBy(webDriver, by, timeOut);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 }
