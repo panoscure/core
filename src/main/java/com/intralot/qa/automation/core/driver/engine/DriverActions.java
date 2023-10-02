@@ -20,6 +20,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.Pause;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Reporter;
 
 import java.io.BufferedReader;
@@ -831,6 +832,17 @@ public class DriverActions {
                         "new UiScrollable(new UiSelector().className(\"android.widget.ScrollView\")).getChildByText(new UiSelector().className(\"android.widget.TextView\"), \""
                                 + keyword + "\")"))
                 .click();
+    }
+
+    public static void selectFromDropDown(WebDriver driver, By by, String keyword) {
+        WebElement selectElement = driver.findElement(by);
+        Select select = new Select(selectElement);
+        select.selectByVisibleText(keyword);
+    }
+
+    public static void selectFromDropDown(WebElement selectElement, String keyword) {
+        Select select = new Select(selectElement);
+        select.selectByVisibleText(keyword);
     }
 
 }

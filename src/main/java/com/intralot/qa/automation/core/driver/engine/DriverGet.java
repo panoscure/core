@@ -18,6 +18,10 @@ public class DriverGet {
         return webElement.getAttribute(whichAttribute);
     }
 
+    public static String attributeValueForElement(WebDriver webDriver, By by, String whichAttribute) {
+        return DriverFind.getElementBy(webDriver, by).getAttribute(whichAttribute);
+    }
+
     public static String elementCssValueForElement(WebElement webElement, String whichAttribute) {
         return webElement.getCssValue(whichAttribute);
     }

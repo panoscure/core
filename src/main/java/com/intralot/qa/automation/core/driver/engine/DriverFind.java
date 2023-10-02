@@ -22,6 +22,10 @@ public class DriverFind {
         return webDriver.findElements(Locators.findByLocator(locator).determineLocator(locator));
     }
 
+    public static List<WebElement> getElementsBy(WebDriver webDriver, By by) {
+        return webDriver.findElements(by);
+    }
+
     public static WebElement getElementBy(WebDriver webDriver, By by) {
         //return DriverWait.forPresenceOfElementBy(webDriver, by, null);
         return webDriver.findElement(by);

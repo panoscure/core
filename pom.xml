@@ -9,13 +9,6 @@
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
-    <distributionManagement>
-        <repository>
-            <id>qa-intralot-jfrog-repo</id>
-            <url>http://localhost:8082/artifactory/tools-repo/</url>
-        </repository>
-    </distributionManagement>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>8</maven.compiler.source>
@@ -118,10 +111,10 @@
                                 <version>${project.version}</version>
                             </deployProperties>
                             <publisher>
-                                <contextUrl>http://localhost:8082/artifactory</contextUrl>
+                                <contextUrl>https://ilotjfrog.intralot.com/artifactory</contextUrl>
                                 <repoKey>tools-repo</repoKey>
                                 <username>admin</username>
-                                <password>Intralot2023</password>
+                                <password>P@ssw0rd</password>
                                 <snapshotRepoKey>tools-repo</snapshotRepoKey>
                                 <publishArtifacts>true</publishArtifacts>
                                 <publishBuildInfo>true</publishBuildInfo>

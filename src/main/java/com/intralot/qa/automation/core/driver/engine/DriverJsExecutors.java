@@ -2,10 +2,7 @@ package com.intralot.qa.automation.core.driver.engine;
 
 import com.intralot.qa.automation.core.utilities.CustomProperties;
 import com.intralot.qa.automation.core.utilities.Log;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 
 public class DriverJsExecutors {
@@ -218,4 +215,16 @@ public class DriverJsExecutors {
         ((JavascriptExecutor) webDriver).executeScript("arguments[0].dispatchEvent(new Event('change'));", DriverFind.getElementBy(webDriver, elementLocator));
     }
 
+    public static void centerViewElement(WebDriver webDriver, By by, Long timeout) {
+        DriverWait.forPresenceOfElementBy(webDriver, by, timeout);
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", DriverFind.getElementBy(webDriver, by));
+    }
+
+    public static void centerViewElement(WebDriver webDriver, WebElement element) {
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'})", element);
+    }
+
+    public static void scrollDown(WebDriver webDriver) {
+        ((JavascriptExecutor) webDriver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
 }
