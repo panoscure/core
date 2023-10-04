@@ -452,19 +452,19 @@ public class DriverActions {
 
     public static void clickElement(WebDriver driver, Object locator, Long customTimeOut) {
         final Long timeOut = CustomProperties.getTimeOutValue(customTimeOut);
-        DriverWait.forPresenceOfElementBy(driver, locator, timeOut).click();
+        DriverWait.forElementToBeClickableBy(driver, locator, timeOut).click();
         Log.info("Element with locator: " + locator + " was clicked.");
     }
 
     public static void clickElement(WebDriver driver, By by, Long customTimeOut) {
         final Long timeOut = CustomProperties.getTimeOutValue(customTimeOut);
-        DriverWait.forPresenceOfElementBy(driver, by, timeOut).click();
+        DriverWait.forElementToBeClickableBy(driver, by, timeOut).click();
         Log.info("Element with locator: " + by + " was clicked.");
     }
 
     public static void clickElement(WebDriver driver, WebElement element, Long customTimeOut) {
         final Long timeOut = CustomProperties.getTimeOutValue(customTimeOut);
-        DriverWait.forElementToBeClickable(driver, element, timeOut).click();
+        DriverWait.forElementToBeClickableBy(driver, element, timeOut).click();
         Log.info("Element with locator: " + element.toString() + " was clicked.");
     }
 
