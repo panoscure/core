@@ -157,6 +157,15 @@ public class DriverWait {
                 .until(ExpectedConditions.elementToBeClickable(Locators.findByLocator((String) locator).determineLocator((String) locator)));
     }
 
+    // Using Object (By) locator (from enums)
+    public static WebElement forElementToBeClickableBy(WebDriver webDriver, WebElement element, Long customTimeOut) {
+
+        final Long timeOut = CustomProperties.getTimeOutValue(customTimeOut);
+
+        return new WebDriverWait(webDriver, Duration.ofSeconds(timeOut))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     // Using WebElement
     public static WebElement forElementToBeClickable(WebDriver webDriver, WebElement webElement, Long customTimeOut) {
 
