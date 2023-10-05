@@ -6,14 +6,14 @@ import com.intralot.qa.automation.core.utilities.OSValidator;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.devtools.*;
+import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v115.emulation.Emulation;
 import org.openqa.selenium.devtools.v115.security.Security;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
@@ -21,6 +21,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Optional;
+import java.util.logging.Level;
 // import java.util.Map;
 // import java.util.concurrent.TimeUnit;
 
@@ -30,54 +31,36 @@ public class DriverFactory {
 
     static File chromeDriverExecutable = null;
 
-    public static WebDriver getDesktopWebDriver() {
+    private static ChromeOptions getChromeOptions() {
+        HashMap<String, Object> chromePrefs = new HashMap<>();
+        chromePrefs.put("profile.default_content_settings.popups", 0);
+        chromePrefs.put("safebrowsing.enabled", "true");
+        chromePrefs.put("download.directory_upgrade", "true");
+        chromePrefs.put("download.prompt_for_download", "false");
 
-        // Load proper webDriver
-        if ((CustomProperties.getChromeDriverWinExecutable() != null)
-                || (CustomProperties.getChromeDriverLinuxExecutable() != null)
-                || (CustomProperties.getChromeDriverMacosExecutable() != null)) {
-
-            // If this is a Windows-based OS
-            if (OSValidator.isWindows())
-                chromeDriverExecutable = new File(CustomProperties.getChromeDriverWinExecutable());
-            else if (OSValidator.isMac())
-                chromeDriverExecutable = new File(CustomProperties.getChromeDriverMacosExecutable());
-            else if (OSValidator.isLinux())
-                chromeDriverExecutable = new File(CustomProperties.getChromeDriverLinuxExecutable());
-
-            System.setProperty("webdriver.chrome.driver", String.valueOf(chromeDriverExecutable));
-
-        }
-        else
-            WebDriverManager.chromedriver().setup();
-
-        // Options
         ChromeOptions options = new ChromeOptions();
-
-        // Preferences
-        HashMap<String, Boolean> prefs = new HashMap<>();
-        prefs.put("credentials_enable_service", false);
-        prefs.put("profile.password_manager_enabled", false);
-        options.setExperimentalOption("prefs", prefs);
-
-        // Arguments
-        options.addArguments("disable-popup-blocking");
-        options.addArguments("disable-infobars");
-        options.addArguments("--ignore-certificate-errors");
-        options.addArguments("disable-translate");
+        options.setExperimentalOption("prefs", chromePrefs);
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
+        options.addArguments("--no-sandbox"); // Bypass OS security model
+        options.addArguments("lang=en");
+        options.addArguments("start-maximized"); // open Browser in maximized mode
+        options.addArguments("disable-infobars"); // disabling infobars
+        options.addArguments("--disable-extensions"); // disabling extensions
+        options.addArguments("--disable-gpu"); // applicable to windows os only
+        options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+        options.addArguments("--ignore-certificate-errors"); //Suppressed Certificate errors
+        options.addArguments("--incognito"); //Icognito mode
         options.addArguments("--remote-allow-origins=*");
-        // Headless mode - enable/disable
-        // options.addArguments("headless");
+        options.addArguments("--disable-web-security");
+        options.addArguments("--allow-running-insecure-content");
+        options.setCapability(ChromeOptions.CAPABILITY, options);
+        return options;
+    }
 
-        ChromeDriverService service = ChromeDriverService.createDefaultService();
-
-        // Initialize WebDriver
-        driver = new ChromeDriver(service, options);
-
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
-
-        return driver;
+    public static WebDriver getDesktopWebDriver() {
+        return new ChromeDriver(getChromeOptions());
     }
 
     // Web driver to simulate on a mobile Chrome browser ;-)
@@ -100,7 +83,7 @@ public class DriverFactory {
 
         }
         else
-            WebDriverManager.chromedriver().setup();
+//            WebDriverManager.chromedriver().setup();
 
         /*
         // Options
