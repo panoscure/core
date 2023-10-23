@@ -5,14 +5,11 @@ import com.google.common.collect.ImmutableMap;
 import com.intralot.qa.automation.core.utilities.CustomProperties;
 import com.intralot.qa.automation.core.utilities.HelperUtilities;
 import com.intralot.qa.automation.core.utilities.Log;
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.PerformsTouchActions;
-import io.appium.java_client.TouchAction;
+import io.appium.java_client.*;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.android.nativekey.PressesKey;
 import io.appium.java_client.remote.SupportsContextSwitching;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -849,6 +846,10 @@ public class DriverActions {
     public static void selectFromDropDown(WebElement selectElement, String keyword) {
         Select select = new Select(selectElement);
         select.selectByVisibleText(keyword);
+    }
+
+    public static void pushFileMobile (AppiumDriver appiumDriver, String devicePathWithFileName, String localPathWithFileName) throws IOException {
+        ((PushesFiles) appiumDriver).pushFile(devicePathWithFileName, new File(localPathWithFileName));
     }
 
 }
