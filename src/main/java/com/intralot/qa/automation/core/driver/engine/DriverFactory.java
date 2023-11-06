@@ -6,6 +6,7 @@ import com.intralot.qa.automation.core.utilities.OSValidator;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -83,7 +84,7 @@ public class DriverFactory {
 
         }
         else
-//            WebDriverManager.chromedriver().setup();
+            WebDriverManager.chromedriver().setup();
 
         /*
         // Options
