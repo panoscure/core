@@ -9,6 +9,7 @@ import io.appium.java_client.ios.options.XCUITestOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v118.emulation.Emulation;
@@ -60,9 +61,66 @@ public class DriverFactory {
         return options;
     }
 
+//    public static WebDriver getDesktopWebDriver() {
+//        return new ChromeDriver(getChromeOptions());
+//    }
+
     public static WebDriver getDesktopWebDriver() {
-        return new ChromeDriver(getChromeOptions());
+
+        // Load proper webDriver
+        if ((CustomProperties.getChromeDriverWinExecutable() != null)
+                || (CustomProperties.getChromeDriverLinuxExecutable() != null)
+                || (CustomProperties.getChromeDriverMacosExecutable() != null)) {
+
+            // If this is a Windows-based OS
+            if (OSValidator.isWindows())
+                chromeDriverExecutable = new File(CustomProperties.getChromeDriverWinExecutable());
+            else if (OSValidator.isMac())
+                chromeDriverExecutable = new File(CustomProperties.getChromeDriverMacosExecutable());
+            else if (OSValidator.isLinux())
+                chromeDriverExecutable = new File(CustomProperties.getChromeDriverLinuxExecutable());
+
+            System.setProperty("webdriver.chrome.driver", String.valueOf(chromeDriverExecutable));
+
+        }
+        else
+            WebDriverManager.chromedriver().setup();
+
+        // Options
+        ChromeOptions options = new ChromeOptions();
+
+        // Preferences
+        HashMap<String, Boolean> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        options.setExperimentalOption("prefs", prefs);
+
+        // Arguments
+        // options.addArguments("--no-sandbox");
+
+        // Headless mode - enable/disable
+        // options.addArguments("--headless");
+
+        // options.addArguments("--disable-dev-shm-usage");
+        // options.addArguments("--window-size=1920x1080");
+        options.addArguments("disable-popup-blocking");
+        options.addArguments("disable-infobars");
+        options.addArguments("--ignore-certificate-errors");
+//        options.addArguments("disable-translate");
+        options.addArguments("--remote-allow-origins=*");
+
+
+        ChromeDriverService service = ChromeDriverService.createDefaultService();
+
+        // Initialize WebDriver
+        driver = new ChromeDriver(service, options);
+
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+
+        return driver;
     }
+
 
     // Web driver to simulate on a mobile Chrome browser ;-)
     public static WebDriver getEmulatedWebDriver() {
