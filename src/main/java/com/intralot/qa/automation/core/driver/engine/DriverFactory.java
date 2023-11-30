@@ -409,7 +409,7 @@ public class DriverFactory {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments(new String[]{"--start-maximized"});
         chromeOptions.addArguments(new String[]{"--ignore-certificate-errors"});
-        chromeOptions.addArguments(new String[]{"--remote-debugging-port=9222"});
+//        chromeOptions.addArguments(new String[]{"--remote-debugging-port=9222"});
         chromeDriverBoni = new ChromeDriver(chromeOptions);
         return chromeDriverBoni;
     }
