@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.intralot.qa.automation</groupId>
-    <artifactId>ilottery-natives-dc-core</artifactId>
+    <artifactId>core</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
 
@@ -25,6 +25,16 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>5.3.2</version>
+        </dependency>
         <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
