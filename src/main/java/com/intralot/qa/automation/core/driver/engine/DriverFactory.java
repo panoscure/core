@@ -89,6 +89,10 @@ public class DriverFactory {
         // Options
         ChromeOptions options = new ChromeOptions();
 
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
+
         // Preferences
         HashMap<String, Boolean> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
