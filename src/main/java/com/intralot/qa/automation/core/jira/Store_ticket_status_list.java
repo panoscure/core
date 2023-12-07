@@ -1,5 +1,7 @@
 package com.intralot.qa.automation.core.jira;
 
+import io.cucumber.java.Scenario;
+import io.cucumber.java.Status;
 import org.testng.ITestResult;
 
 import java.util.HashMap;
@@ -41,7 +43,31 @@ public class Store_ticket_status_list {
         storeKeyValue(result.getName(), testStatus);
     }
 
+
+    public static void testStatus(Scenario result){
+        boolean testStatus; // Variable to store the test status
+        // Check the status of the test and store it in the variable
+        if (result.getStatus() == Status.PASSED) {
+            testStatus = true; // Test passed
+        } else {
+            testStatus = false; // Test failed
+        }
+        System.out.println("TEST STATUS= " + testStatus + "Test ID: " + result.getName());
+        storeKeyValue(result.getName(), testStatus);
+    }
+
     public static void update_tc_status_full_flow(ITestResult result, String cycleId, String cycleFolderName) {
+        Store_ticket_status_list.testStatus(result);
+        HashMap<String, String> storedMap = (HashMap<String, String>) Store_ticket_status_list.getKeyValueMap();
+        System.out.println("Key-Value Store:");
+        for (Map.Entry<String, String> entry : storedMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+        System.out.println(storedMap);
+        makeApiCallsAndUpdateZephyrExecutionsCycles(cycleId, cycleFolderName, storedMap);
+    }
+
+    public static void update_tc_status_full_flow(Scenario result, String cycleId, String cycleFolderName) {
         Store_ticket_status_list.testStatus(result);
         HashMap<String, String> storedMap = (HashMap<String, String>) Store_ticket_status_list.getKeyValueMap();
         System.out.println("Key-Value Store:");
