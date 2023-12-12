@@ -8,7 +8,7 @@ import java.util.Map;
 import static com.intralot.qa.automation.core.jira.JiraServices.makeApiCallsAndUpdateZephyrExecutionsCycles;
 
 
-public class Store_ticket_status_list {
+public class Store_ticket_status_list1 {
     private static Map<String, String> keyValueMap = new HashMap<>();
 
     // Method to store a key-value pair in the HashMap
@@ -42,8 +42,8 @@ public class Store_ticket_status_list {
     }
 
     public static void update_tc_status_full_flow(ITestResult result, String cycleId, String cycleFolderName) {
-        Store_ticket_status_list.testStatus(result);
-        HashMap<String, String> storedMap = (HashMap<String, String>) Store_ticket_status_list.getKeyValueMap();
+        Store_ticket_status_list1.testStatus(result);
+        HashMap<String, String> storedMap = (HashMap<String, String>) Store_ticket_status_list1.getKeyValueMap();
         System.out.println("Key-Value Store:");
         for (Map.Entry<String, String> entry : storedMap.entrySet()) {
             System.out.println(entry.getKey() + " -> " + entry.getValue());
