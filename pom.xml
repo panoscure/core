@@ -22,6 +22,7 @@
         <joda-time-version>2.10</joda-time-version>
         <testng-version>7.4.0</testng-version>
         <apache-commons-version>2.11.0</apache-commons-version>
+        <cucumber.version>7.11.1</cucumber.version>
     </properties>
 
     <dependencies>
@@ -90,6 +91,11 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager-version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>cucumber-java</artifactId>
+            <groupId>io.cucumber</groupId>
+            <version>${cucumber.version}</version>
         </dependency>
     </dependencies>
     <build>
