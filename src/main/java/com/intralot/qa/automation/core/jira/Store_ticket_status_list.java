@@ -4,7 +4,9 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.Status;
 import org.testng.ITestResult;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.intralot.qa.automation.core.jira.JiraServices.makeApiCallsAndUpdateZephyrExecutionsCycles;
@@ -30,7 +32,6 @@ public class Store_ticket_status_list {
         return keyValueMap;
     }
 
-
     public static void testStatus(ITestResult result){
         boolean testStatus; // Variable to store the test status
         // Check the status of the test and store it in the variable
@@ -43,17 +44,23 @@ public class Store_ticket_status_list {
         storeKeyValue(result.getName(), testStatus);
     }
 
-
-    public static void testStatus(Scenario result){
+    public static void testStatus(Scenario scenario){
         boolean testStatus; // Variable to store the test status
         // Check the status of the test and store it in the variable
-        if (result.getStatus() == Status.PASSED) {
+        if (scenario.getStatus() == Status.PASSED) {
             testStatus = true; // Test passed
         } else {
             testStatus = false; // Test failed
         }
-        System.out.println("TEST STATUS= " + testStatus + "Test ID: " + result.getName());
-        storeKeyValue(result.getName(), testStatus);
+        System.out.println("TEST STATUS= " + testStatus + "Test ID: " + scenario.getName());
+        Collection<String> tags = scenario.getSourceTagNames();
+        String testId = null;
+        for (String tag:tags) {
+            if (tag.contains("TST")) {
+                testId = tag.replace("@TST-", "");
+            }
+        }
+        storeKeyValue(testId, testStatus);
     }
 
     public static void update_tc_status_full_flow(ITestResult result, String cycleId, String cycleFolderName) {
