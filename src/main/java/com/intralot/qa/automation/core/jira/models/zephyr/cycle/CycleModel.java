@@ -46,6 +46,10 @@ public class CycleModel {
     @Expose
     private Integer projectId;
 
+    @SerializedName("startDate")
+    @Expose
+    private String startDate;
+
     public String getDescription() {
         return description;
     }
@@ -148,5 +152,13 @@ public class CycleModel {
 
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 }
