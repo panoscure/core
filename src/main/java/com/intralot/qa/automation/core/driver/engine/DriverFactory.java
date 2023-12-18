@@ -1,7 +1,6 @@
 package com.intralot.qa.automation.core.driver.engine;
 
 import com.intralot.qa.automation.core.utilities.CustomProperties;
-import com.intralot.qa.automation.core.utilities.HelperUtilities;
 import com.intralot.qa.automation.core.utilities.OSValidator;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -32,6 +31,7 @@ public class DriverFactory {
     public static WebDriver driver = null;
 
     static File chromeDriverExecutable = null;
+    public static WebDriver chromeDriverBoni;
 
     private static ChromeOptions getChromeOptions() {
         HashMap<String, Object> chromePrefs = new HashMap<>();
@@ -88,6 +88,10 @@ public class DriverFactory {
 
         // Options
         ChromeOptions options = new ChromeOptions();
+
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        options.setCapability(ChromeOptions.LOGGING_PREFS, logPrefs);
 
         // Preferences
         HashMap<String, Boolean> prefs = new HashMap<>();
@@ -402,6 +406,16 @@ public class DriverFactory {
         driver.manage().deleteAllCookies();
 
         return driver;
+    }
+
+    public static WebDriver initializeAndGetChromeDriverBoni() {
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments(new String[]{"--start-maximized"});
+        chromeOptions.addArguments(new String[]{"--ignore-certificate-errors"});
+//        chromeOptions.addArguments(new String[]{"--remote-debugging-port=9222"});
+        chromeDriverBoni = new ChromeDriver(chromeOptions);
+        return chromeDriverBoni;
     }
 
 }
