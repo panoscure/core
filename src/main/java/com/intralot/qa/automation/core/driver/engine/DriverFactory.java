@@ -408,12 +408,34 @@ public class DriverFactory {
         return driver;
     }
 
-    public static WebDriver initializeAndGetChromeDriverBoni() {
+    public static WebDriver initializeAndGetChromeDriverBoni(String resolution, boolean certificate) {
+
         WebDriverManager.chromedriver().clearDriverCache().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments(new String[]{"--start-maximized"});
-        chromeOptions.addArguments(new String[]{"--ignore-certificate-errors"});
-//        chromeOptions.addArguments(new String[]{"--remote-debugging-port=9222"});
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments(new String[]{"disable-infobars"});
+        chromeOptions.addArguments(new String[]{"--disable-extensions"});
+        chromeOptions.addArguments(new String[]{"--remote-allow-origins=*"});
+        chromeOptions.addArguments(new String[]{"--disable-web-security"});
+        chromeOptions.addArguments(new String[]{"--allow-running-insecure-content"});
+
+        // start-maximized OR --window-size=1920,1080
+        chromeOptions.addArguments(resolution);
+
+        if (!certificate) {
+            chromeOptions.addArguments("--ignore-certificate-errors");
+        }
+
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable("browser", Level.ALL);
+        chromeOptions.setCapability("goog:loggingPrefs", logPrefs);
+
+        //  chromeOptions.addArguments(new String[]{"--disable-gpu"});
+        //  chromeOptions.addArguments(new String[]{"--disable-dev-shm-usage"});
+
         chromeDriverBoni = new ChromeDriver(chromeOptions);
         return chromeDriverBoni;
     }
