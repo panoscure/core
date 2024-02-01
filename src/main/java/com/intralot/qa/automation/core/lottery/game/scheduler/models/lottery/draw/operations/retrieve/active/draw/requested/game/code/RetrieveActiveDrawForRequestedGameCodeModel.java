@@ -1,5 +1,5 @@
 
-package com.intralot.qa.automation.core.driver.engine;
+package com.intralot.qa.automation.core.lottery.game.scheduler.models.lottery.draw.operations.retrieve.active.draw.requested.game.code;
 
 import java.math.BigInteger;
 import java.util.List;
