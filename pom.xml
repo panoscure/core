@@ -105,11 +105,11 @@
             <groupId>io.cucumber</groupId>
             <version>${cucumber.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.intralot</groupId>
-            <artifactId>automation.commons</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.intralot</groupId>-->
+<!--            <artifactId>automation.commons</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
     </dependencies>
     <build>
         <pluginManagement>

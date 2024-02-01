@@ -34,7 +34,7 @@ public class RetrieveActiveDrawForRequestedGameCodeModel {
     private List<Object> winningNumbers = null;
     @SerializedName("prizeCategories")
     @Expose
-    private List < lottery.game.scheduler.models.lottery.draw.operations.retrieve.active.draw.requested.game.code.game.code.PrizeCategory> prizeCategories = null;
+    private List <PrizeCategory> prizeCategories = null;
     @SerializedName("winningRevision")
     @Expose
     private Integer winningRevision;
@@ -112,11 +112,11 @@ public class RetrieveActiveDrawForRequestedGameCodeModel {
         this.winningNumbers = winningNumbers;
     }
 
-    public List<lottery.game.scheduler.models.lottery.draw.operations.retrieve.active.draw.requested.game.code.game.code.PrizeCategory> getPrizeCategories() {
+    public List<PrizeCategory> getPrizeCategories() {
         return prizeCategories;
     }
 
-    public void setPrizeCategories(List<lottery.game.scheduler.models.lottery.draw.operations.retrieve.active.draw.requested.game.code.game.code.PrizeCategory> prizeCategories) {
+    public void setPrizeCategories(List<PrizeCategory> prizeCategories) {
         this.prizeCategories = prizeCategories;
     }
 
