@@ -47,6 +47,9 @@ public class RetrieveActiveDrawForRequestedGameCodeModel {
     @SerializedName("reservedFund")
     @Expose
     private Double reservedFund;
+    @SerializedName("winAmountType")
+    @Expose
+    private Double winAmountType;
 
     public Integer getGameId() {
         return gameId;
@@ -150,5 +153,13 @@ public class RetrieveActiveDrawForRequestedGameCodeModel {
 
     public void setReservedFund(Double reservedFund) {
         this.reservedFund = reservedFund;
+    }
+
+    public Double getWinAmountType() {
+        return winAmountType;
+    }
+
+    public void setWinAmountType(Double winAmountType) {
+        this.winAmountType = winAmountType;
     }
 }
