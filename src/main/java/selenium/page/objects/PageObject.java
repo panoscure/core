@@ -59,8 +59,5 @@ public class PageObject {
         webElement.click();
     }
 
-    public String getCssClassesForWebElement(WebElement webElement) {
-        return webElement.getAttribute("class");
-    }
 
 }
