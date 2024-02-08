@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class EurojackpotPage extends PageObject {
 
-    @FindBy(xpath = "//div[text()='Play All']")
+    @FindBy(xpath = "//div[text()='Speel alle']")
     private WebElement playAll;
 
     @FindBy(xpath = "//div[@class='addTab p_rel row-12']")
