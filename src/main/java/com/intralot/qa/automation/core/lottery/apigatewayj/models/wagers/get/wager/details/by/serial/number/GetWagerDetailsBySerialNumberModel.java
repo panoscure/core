@@ -26,6 +26,9 @@ public class GetWagerDetailsBySerialNumberModel {
     @SerializedName("promotionOutcomes")
     @Expose
     private List<PromotionOutcome> promotionOutcomes = null;
+    @SerializedName("discount")
+    @Expose
+    private Metadata discount;
 
     public Wager getWager() {
         return wager;
@@ -74,5 +77,11 @@ public class GetWagerDetailsBySerialNumberModel {
     public void setPromotionOutcomes(List<PromotionOutcome> promotionOutcomes) {
         this.promotionOutcomes = promotionOutcomes;
     }
+    public Metadata getDiscount() {
+        return discount;
+    }
 
+    public void setDiscount(Metadata discount) {
+        this.discount = discount;
+    }
 }
