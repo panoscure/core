@@ -25,6 +25,9 @@ public class GetWagerDetailsByWagerIdModel {
     @SerializedName("pilot")
     @Expose
     private Boolean pilot;
+    @SerializedName("discount")
+    @Expose
+    private Metadata discount;
 
     public Wager getWager() {
         return wager;
@@ -74,4 +77,11 @@ public class GetWagerDetailsByWagerIdModel {
         this.promotionOutcomes = promotionOutcomes;
     }
 
+    public Metadata getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Metadata discount) {
+        this.discount = discount;
+    }
 }
