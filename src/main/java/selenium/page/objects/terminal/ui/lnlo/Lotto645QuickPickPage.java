@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import selenium.SeleniumWaits;
+import com.intralot.qa.automation.core.driver.engine.SeleniumWaits;
 import selenium.page.objects.PageObject;
 
 public class Lotto645QuickPickPage extends PageObject {

@@ -1,9 +1,9 @@
 package selenium.page.objects.terminal.ui.lnlo;
 
-import common.utils.Properties;
+import com.intralot.qa.automation.core.driver.engine.common.Properties;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import selenium.SeleniumWaits;
+import com.intralot.qa.automation.core.driver.engine.SeleniumWaits;
 import selenium.page.objects.PageObject;
 
 public class Lotto645Page extends PageObject {

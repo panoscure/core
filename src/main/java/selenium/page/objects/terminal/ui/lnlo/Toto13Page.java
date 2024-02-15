@@ -1,11 +1,11 @@
 package selenium.page.objects.terminal.ui.lnlo;
 
-import common.utils.Properties;
+import com.intralot.qa.automation.core.driver.engine.common.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import selenium.SeleniumWaits;
+import com.intralot.qa.automation.core.driver.engine.SeleniumWaits;
 import selenium.page.objects.PageObject;
 
 public class Toto13Page extends PageObject {
