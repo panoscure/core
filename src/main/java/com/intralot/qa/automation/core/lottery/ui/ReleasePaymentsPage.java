@@ -26,24 +26,24 @@ public class ReleasePaymentsPage extends PageObject {
         super(webDriver);
     }
 
-    public ReleasePaymentsPage selectGame(String code) {
-        By gameDropDown = By.xpath("//select[@name='game']");
-        WebElement gameDropDownElement = webDriver.findElement(gameDropDown);
-        SeleniumWaits.elementToBeClickable(webDriver, gameDropDownElement);
-        gameDropDownElement.click();
-
-        Select selectGameMenu = new Select(gameDropDownElement);
-        new FluentWait<>(webDriver).withTimeout(Duration.ofSeconds(5)).pollingEvery(Duration.ofMillis(100))
-                .until((webDriver -> (selectGameMenu.getOptions().size() > 1)));
-        selectGameMenu.selectByValue(code);
-
-        new WebDriverWait(webDriver, WEB_DRIVER_WAIT_TIMEOUT)
-                .until(ExpectedConditions.presenceOfNestedElementsLocatedBy(gameDropDown, By.xpath("//*[@value=" + code + "]")));
-
-        selectFromDropdownByValue(gameDropDown, code);
-        SeleniumWaits.presenceOfElementLocated(webDriver, ALERT_SUCCESS_MESSAGE);
-        return new ReleasePaymentsPage(webDriver);
-    }
+//    public ReleasePaymentsPage selectGame(String code) {
+//        By gameDropDown = By.xpath("//select[@name='game']");
+//        WebElement gameDropDownElement = webDriver.findElement(gameDropDown);
+//        SeleniumWaits.elementToBeClickable(webDriver, gameDropDownElement);
+//        gameDropDownElement.click();
+//
+//        Select selectGameMenu = new Select(gameDropDownElement);
+//        new FluentWait<>(webDriver).withTimeout(Duration.ofSeconds(5)).pollingEvery(Duration.ofMillis(100))
+//                .until((webDriver -> (selectGameMenu.getOptions().size() > 1)));
+//        selectGameMenu.selectByValue(code);
+//
+//        new WebDriverWait(webDriver, WEB_DRIVER_WAIT_TIMEOUT)
+//                .until(ExpectedConditions.presenceOfNestedElementsLocatedBy(gameDropDown, By.xpath("//*[@value=" + code + "]")));
+//
+//        selectFromDropdownByValue(gameDropDown, code);
+//        SeleniumWaits.presenceOfElementLocated(webDriver, ALERT_SUCCESS_MESSAGE);
+//        return new ReleasePaymentsPage(webDriver);
+//    }
 
     public ReleasePaymentsPage clickActionsButton(String drawId) {
         By actionsButton = By.xpath("//td[text()='" + drawId + "'][1]/following-sibling::td[4]//button");

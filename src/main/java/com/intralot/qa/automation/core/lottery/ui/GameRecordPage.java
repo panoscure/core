@@ -178,19 +178,19 @@ public class GameRecordPage extends PageObject {
         return select.getFirstSelectedOption().getText();
     }
 
-    public GameRecordPage clickSaveButtonAndGetMessage() {
-        JavaScriptExecutors.clickElement(webDriver, saveButton);
-        By confirmSaveBtn = By.xpath("//*[@id='root']/span/div/div[1]/div[2]/button[1]");
-        SeleniumWaits.presenceOfElementLocated(webDriver, confirmSaveBtn);
-        webDriver.findElement(confirmSaveBtn).click();
-
-        new WebDriverWait(webDriver, TimeUnit.SECONDS.toSeconds(60L))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class = 'top-right']//*")));
-        By alertSuccessMessage = By.xpath("//*[@role='alert']//*[contains(text(),'Saved')]");
-        new WebDriverWait(webDriver, TimeUnit.SECONDS.toSeconds(60L))
-                .until(ExpectedConditions.visibilityOfElementLocated(alertSuccessMessage));
-        return this;
-    }
+//    public GameRecordPage clickSaveButtonAndGetMessage() {
+//        JavaScriptExecutors.clickElement(webDriver, saveButton);
+//        By confirmSaveBtn = By.xpath("//*[@id='root']/span/div/div[1]/div[2]/button[1]");
+//        SeleniumWaits.presenceOfElementLocated(webDriver, confirmSaveBtn);
+//        webDriver.findElement(confirmSaveBtn).click();
+//
+//        new WebDriverWait(webDriver, TimeUnit.SECONDS.toSeconds(60L))
+//                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class = 'top-right']//*")));
+//        By alertSuccessMessage = By.xpath("//*[@role='alert']//*[contains(text(),'Saved')]");
+//        new WebDriverWait(webDriver, TimeUnit.SECONDS.toSeconds(60L))
+//                .until(ExpectedConditions.visibilityOfElementLocated(alertSuccessMessage));
+//        return this;
+//    }
 
     public GameRecordPage clickSaveButtonOnlineParticipationChannel() {
         SeleniumWaits.elementToBeClickable(webDriver, saveButtonOnlineParticipationChannel);
@@ -208,14 +208,14 @@ public class GameRecordPage extends PageObject {
         return this;
     }
 
-    public GameRecordPage clickActivate() {
-        SeleniumWaits.elementToBeClickable(webDriver, activateBtn);
-        JavaScriptExecutors.clickElement(webDriver, activateBtn);
-        new WebDriverWait(webDriver, TimeUnit.SECONDS.toSeconds(60L))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='alert']//*[contains(text(),'Activated')]")));
-        SeleniumWaits.invisibilityOfElementLocated(webDriver, By.className("block-ui-container"));
-        return this;
-    }
+//    public GameRecordPage clickActivate() {
+//        SeleniumWaits.elementToBeClickable(webDriver, activateBtn);
+//        JavaScriptExecutors.clickElement(webDriver, activateBtn);
+//        new WebDriverWait(webDriver, TimeUnit.SECONDS.toSeconds(60L))
+//                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@role='alert']//*[contains(text(),'Activated')]")));
+//        SeleniumWaits.invisibilityOfElementLocated(webDriver, By.className("block-ui-container"));
+//        return this;
+//    }
 
     public GameRecordPage expandLottoParameters() {
         SeleniumWaits.elementToBeClickable(webDriver, lottoParameters);

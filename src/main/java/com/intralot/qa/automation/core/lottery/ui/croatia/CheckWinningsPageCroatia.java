@@ -1,8 +1,9 @@
 package com.intralot.qa.automation.core.lottery.ui.croatia;
 
+import com.intralot.qa.automation.core.lottery.ui.CheckWinningsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import selenium.page.objects.lottery.ui.CheckWinningsPage;
+
 
 public class CheckWinningsPageCroatia extends CheckWinningsPage {
 
