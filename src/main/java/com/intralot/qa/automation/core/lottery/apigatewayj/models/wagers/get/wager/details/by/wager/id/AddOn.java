@@ -15,6 +15,9 @@ public class AddOn {
     @SerializedName("gameTypeId")
     @Expose
     private Integer gameTypeId;
+    @SerializedName("discount")
+    @Expose
+    private Integer discount;
 
     public Integer getColumns() {
         return columns;
@@ -40,4 +43,10 @@ public class AddOn {
         this.gameTypeId = gameTypeId;
     }
 
+    public Integer getDiscount() {
+        return discount;
+    }
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
 }
