@@ -48,8 +48,8 @@ public class Panel {
         return qPSelections;
     }
 
-    public void setQPSelections(Integer qPSelections) {
-        this.qPSelections = qPSelections;
+    public void setQPSelections(Integer QPSelections) {
+        this.qPSelections = QPSelections;
     }
 
 }
