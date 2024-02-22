@@ -18,6 +18,10 @@ public class Datum {
     @Expose
     private Integer count;
 
+    @SerializedName("code")
+    @Expose
+    private Integer code;
+
     public String getDescription() {
         return description;
     }
@@ -50,4 +54,11 @@ public class Datum {
         this.count = count;
     }
 
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
 }
