@@ -14,12 +14,12 @@ import static io.restassured.RestAssured.given;
 
 public class Wagers {
 
-    public static Object getWagerDetailsBySerialNumber(Map<String, String> headers, String serialNumber) {
+    public static Object getWagerDetailsBySerialNumber(String agj_project_url,Map<String, String> headers, String serialNumber) {
         headers.put("Guid", UUID.randomUUID().toString());
         return given()
                 .headers(headers)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/wagers/{serialNumber}", serialNumber);
+                .get(agj_project_url + "/api/v1.0/wagers/{serialNumber}", serialNumber);
     }
 
     public static Object getWagerDetailsBySerialNumberWithLevel(Map<String, String> headers, String serialNumber, String level) {

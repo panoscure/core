@@ -10,13 +10,13 @@ import static java.net.HttpURLConnection.HTTP_OK;
 
 public class Authentication {
 
-    public static String grantAuthorizationTokenExtractToken(Map<String, String> headers, Map<String, String> formData) {
+    public static String grantAuthorizationTokenExtractToken(String agj_project_url, Map<String, String> headers, Map<String, String> formData) {
         return given()
                 .headers(headers)
                 .formParams(formData)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/authentication/token")
+                .post(agj_project_url + "/authentication/token")
                 .then()
                 .statusCode(HTTP_OK)
                 .extract().path("access_token");
