@@ -413,7 +413,6 @@ public class DriverFactory {
         WebDriverManager.chromedriver().clearDriverCache().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--start-maximized");
-        chromeOptions.addArguments("--ignore-certificate-errors");
         chromeOptions.addArguments("--incognito");
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments(new String[]{"disable-infobars"});
