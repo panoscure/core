@@ -50,7 +50,7 @@ public class EurojackpotPage extends PageObject {
     }
 
     public EurojackpotPage clickMultipleDrawsArrow() {
-        clickElement(webDriver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[1]/div[1]/div[2]/div[12]")));
+        clickElement(webDriver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[1]/div[1]/div[2]/div[10]")));
         return this;
     }
 
@@ -78,7 +78,7 @@ public class EurojackpotPage extends PageObject {
     }
 
     public String getTotalPrice() {
-        WebElement totalPriceElement = webDriver.findElement(By.xpath("/html/body/div[1]/div/div/footer/div[2]/div[1]/div[2]"));
+        WebElement totalPriceElement = webDriver.findElement(By.xpath("/html/body/div[1]/div/div/footer/div[2]/div[1]/div[3]"));
         return totalPriceElement.getText();
     }
 }
