@@ -16,9 +16,9 @@ public class Panel {
     @SerializedName("selection")
     @Expose
     private List<Integer> selection = null;
-    @SerializedName("QPSelections")
+    @SerializedName("qpselections")
     @Expose
-    private Integer QPSelections;
+    private Integer qpselections;
 
     public Boolean getQuickPick() {
         return quickPick;
@@ -44,12 +44,12 @@ public class Panel {
         this.selection = selection;
     }
 
-    public Integer getQPSelections() {
-        return QPSelections;
+
+    public Integer getQpselections() {
+        return qpselections;
     }
 
-    public void setQPSelections(Integer QPSelections) {
-        this.QPSelections = QPSelections;
+    public void setQpselections(Integer qpselections) {
+        this.qpselections = qpselections;
     }
-
 }
