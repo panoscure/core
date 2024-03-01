@@ -50,7 +50,7 @@ public class EurojackpotPage extends PageObject {
     }
 
     public EurojackpotPage clickMultipleDrawsArrow() {
-        clickElement(webDriver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[1]/div/div[1]/div")));
+        clickElement(webDriver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[1]/div[1]/div[2]/div[12]")));
         return this;
     }
 
