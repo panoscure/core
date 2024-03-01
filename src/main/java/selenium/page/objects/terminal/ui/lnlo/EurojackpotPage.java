@@ -33,7 +33,7 @@ public class EurojackpotPage extends PageObject {
     }
 
     public void clickPlay() {
-        clickElement(webDriver.findElement(By.xpath("//div[text()='" + Properties.getPropertyValue("PlayAll") + "']")));
+        clickElement(webDriver.findElement(By.xpath("/html/body/div[1]/div/div/footer/div[2]/div[2]")));
     }
 
     public void addBoard() {
