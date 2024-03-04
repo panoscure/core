@@ -9,12 +9,14 @@ import org.openqa.selenium.support.FindBy;
 import com.intralot.qa.automation.core.driver.engine.SeleniumWaits;
 import selenium.page.objects.PageObject;
 
+import java.time.LocalDateTime;
+
 public class GamesPage extends PageObject {
 
     @FindBy(xpath = "//div[1]/div/div[contains(@class, 'gamelogos')]/div[2]")
     private WebElement eurojackpotIcon;
 
-    @FindBy(xpath = "//*[@id='app']/div[2]/div[2]/div[2]/div/main/div[1]/div/div[2]/div")
+    @FindBy(xpath = "//*[@id=\"app\"]/div[2]/div[2]/div[2]/div/main/div[1]/div/div[2]/div[2]/div")
     private WebElement eurojackpotQPButton;
 
     @FindBy(xpath = "//*[@id='app']//div[2]/div[2]/div/main/div[1]/div/div[3]")
@@ -71,11 +73,20 @@ public class GamesPage extends PageObject {
         return new Lotto645QuickPickPage(webDriver);
     }
 
-    public void clickCheckout() {
-        SeleniumWaits.visibilityOfElementLocated(webDriver, By.xpath("//span[text()='" + Properties.getPropertyValue("Checkout") + "']"));
-        clickElement(webDriver.findElement(By.xpath("//span[text()='" + Properties.getPropertyValue("Checkout") + "']")));
-        SeleniumWaits.visibilityOfElementLocated(webDriver,
-                By.xpath("//aside[@class='cart']/span[@class='btnplace']//a[text()='" + Properties.getPropertyValue("Print") + "']"));
+    public void clickCheckout() throws InterruptedException {
+        //SeleniumWaits.visibilityOfElementLocated(webDriver, By.xpath("//span[text()='" + Properties.getPropertyValue("Checkout") + "']"));
+        //this.clickElement(webDriver.findElement(By.xpath("//span[text()='" + Properties.getPropertyValue("Checkout") + "']")));
+        //SeleniumWaits.visibilityOfElementLocated(webDriver, By.xpath("//*[@class='btnplace']"));
+
+        WebElement button = webDriver.findElement(By.xpath("//*[@class='btnplace']"));
+        button.click();
+        Thread.sleep(500);
+    }
+
+
+    public void clickNee() throws InterruptedException {
+        WebElement button = webDriver.findElement(By.xpath("//*[@class='button cancel']"));
+        button.click();
     }
 
     public void clickCheckoutAndWaitForHighBetPopUp() {

@@ -31,6 +31,16 @@ public class GetWagerDetailsByWagerIdModel {
     @SerializedName("QPSelections")
     @Expose
     private Metadata QPSelections;
+    @SerializedName("code")
+    @Expose
+    private Metadata code;
+    @SerializedName("type")
+    @Expose
+    private Metadata type;
+    @SerializedName("source")
+    @Expose
+    private Metadata source;
+
     public Wager getWager() {
         return wager;
     }
@@ -94,6 +104,30 @@ public class GetWagerDetailsByWagerIdModel {
 
     public void setQPSelections(Metadata QPSelections) {
         this.QPSelections = QPSelections;
+    }
+
+    public Metadata getCode() {
+        return code;
+    }
+
+    public void setCode(Metadata code) {
+        this.code = code;
+    }
+
+    public Metadata getType() {
+        return type;
+    }
+
+    public void setType(Metadata type) {
+        this.type = type;
+    }
+
+    public Metadata getSource() {
+        return source;
+    }
+
+    public void setSource(Metadata source) {
+        this.source = source;
     }
 }
 
