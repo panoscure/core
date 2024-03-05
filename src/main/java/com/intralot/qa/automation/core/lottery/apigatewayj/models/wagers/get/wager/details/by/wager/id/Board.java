@@ -1,66 +1,71 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id;
 
+import java.util.LinkedHashMap;
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "boardId",
+        "multipliers",
+        "panels"
+})
 public class Board {
 
-    @SerializedName("boardId")
-    @Expose
+    @JsonProperty("boardId")
     private Integer boardId;
-    @SerializedName("multipliers")
-    @Expose
-    private List<Integer> multipliers = null;
-    @SerializedName("panels")
-    @Expose
-    private List<Panel> panels = null;
-    @SerializedName("quickPick")
-    @Expose
-    private Boolean quickPick;
-    @SerializedName("betType")
-    @Expose
-    private Integer betType;
+    @JsonProperty("multipliers")
+    private List<Integer> multipliers;
+    @JsonProperty("panels")
+    private List<Panel> panels;
+    @JsonIgnore
+    private final Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    public void setBetType(Integer betType) {
-        this.betType = betType;
-    }
-
-    public Integer getBetType() {
-        return betType;
-    }
-
+    @JsonProperty("boardId")
     public Integer getBoardId() {
         return boardId;
     }
 
+    @JsonProperty("boardId")
     public void setBoardId(Integer boardId) {
         this.boardId = boardId;
     }
 
+    @JsonProperty("multipliers")
     public List<Integer> getMultipliers() {
         return multipliers;
     }
 
+    @JsonProperty("multipliers")
     public void setMultipliers(List<Integer> multipliers) {
         this.multipliers = multipliers;
     }
 
+    @JsonProperty("panels")
     public List<Panel> getPanels() {
         return panels;
     }
 
+    @JsonProperty("panels")
     public void setPanels(List<Panel> panels) {
         this.panels = panels;
     }
 
-    public Boolean getQuickPick() {
-        return quickPick;
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
     }
 
-    public void setQuickPick(Boolean quickPick) {
-        this.quickPick = quickPick;
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

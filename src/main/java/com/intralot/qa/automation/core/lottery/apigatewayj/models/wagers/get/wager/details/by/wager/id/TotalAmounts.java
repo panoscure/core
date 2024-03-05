@@ -1,76 +1,109 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "gross",
+        "net",
+        "other",
+        "refund",
+        "tax",
+        "freeBet"
+})
 public class TotalAmounts {
 
-    @SerializedName("gross")
-    @Expose
-    private Double gross;
-    @SerializedName("net")
-    @Expose
-    private Double net;
-    @SerializedName("other")
-    @Expose
-    private Double other;
-    @SerializedName("refund")
-    @Expose
-    private Double refund;
-    @SerializedName("tax")
-    @Expose
-    private Double tax;
-    @SerializedName("freeBet")
-    @Expose
-    private Double freeBet;
+    @JsonProperty("gross")
+    private Integer gross;
+    @JsonProperty("net")
+    private Integer net;
+    @JsonProperty("other")
+    private Integer other;
+    @JsonProperty("refund")
+    private Integer refund;
+    @JsonProperty("tax")
+    private Integer tax;
+    @JsonProperty("freeBet")
+    private Integer freeBet;
+    @JsonIgnore
+    private final Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    public Double getGross() {
+    @JsonProperty("gross")
+    public Integer getGross() {
         return gross;
     }
 
-    public void setGross(Double gross) {
+    @JsonProperty("gross")
+    public void setGross(Integer gross) {
         this.gross = gross;
     }
 
-    public Double getNet() {
+    @JsonProperty("net")
+    public Integer getNet() {
         return net;
     }
 
-    public void setNet(Double net) {
+    @JsonProperty("net")
+    public void setNet(Integer net) {
         this.net = net;
     }
 
-    public Double getOther() {
+    @JsonProperty("other")
+    public Integer getOther() {
         return other;
     }
 
-    public void setOther(Double other) {
+    @JsonProperty("other")
+    public void setOther(Integer other) {
         this.other = other;
     }
 
-    public Double getRefund() {
+    @JsonProperty("refund")
+    public Integer getRefund() {
         return refund;
     }
 
-    public void setRefund(Double refund) {
+    @JsonProperty("refund")
+    public void setRefund(Integer refund) {
         this.refund = refund;
     }
 
-    public Double getTax() {
+    @JsonProperty("tax")
+    public Integer getTax() {
         return tax;
     }
 
-    public void setTax(Double tax) {
+    @JsonProperty("tax")
+    public void setTax(Integer tax) {
         this.tax = tax;
     }
 
-    public Double getFreeBet() {
+    @JsonProperty("freeBet")
+    public Integer getFreeBet() {
         return freeBet;
     }
 
-    public void setFreeBet(Double freeBet) {
+    @JsonProperty("freeBet")
+    public void setFreeBet(Integer freeBet) {
         this.freeBet = freeBet;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

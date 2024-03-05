@@ -1,55 +1,84 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id;
 
+import java.util.LinkedHashMap;
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "quickPick",
+        "requested",
+        "selection",
+        "QPSelections"
+})
 public class Panel {
 
-    @SerializedName("quickPick")
-    @Expose
+    @JsonProperty("quickPick")
     private Boolean quickPick;
-    @SerializedName("requested")
-    @Expose
+    @JsonProperty("requested")
     private Integer requested;
-    @SerializedName("selection")
-    @Expose
-    private List<Integer> selection = null;
-    @SerializedName("QPSelections")
-    @Expose
-    private Integer QPSelections;
+    @JsonProperty("selection")
+    private List<Integer> selection;
+    @JsonProperty("QPSelections")
+    private Integer qPSelections;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
+    @JsonProperty("quickPick")
     public Boolean getQuickPick() {
         return quickPick;
     }
 
+    @JsonProperty("quickPick")
     public void setQuickPick(Boolean quickPick) {
         this.quickPick = quickPick;
     }
 
+    @JsonProperty("requested")
     public Integer getRequested() {
         return requested;
     }
 
+    @JsonProperty("requested")
     public void setRequested(Integer requested) {
         this.requested = requested;
     }
 
+    @JsonProperty("selection")
     public List<Integer> getSelection() {
         return selection;
     }
 
+    @JsonProperty("selection")
     public void setSelection(List<Integer> selection) {
         this.selection = selection;
     }
 
-
+    @JsonProperty("QPSelections")
     public Integer getQPSelections() {
-        return QPSelections;
+        return qPSelections;
     }
 
-    public void setQPSelections(Integer QPSelections) {
-        this.QPSelections = QPSelections;
+    @JsonProperty("QPSelections")
+    public void setQPSelections(Integer qPSelections) {
+        this.qPSelections = qPSelections;
     }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
 }

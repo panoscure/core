@@ -1,166 +1,240 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id;
 
-import java.math.BigInteger;
+import java.util.LinkedHashMap;
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "addOn",
+        "blockStatus",
+        "boards",
+        "columns",
+        "cost",
+        "creationTime",
+        "updatedTime",
+        "discount",
+        "gameId",
+        "isPrimary",
+        "multipliers",
+        "options",
+        "participatingDraws",
+        "status",
+        "selectionsType",
+        "wagerType"
+})
 public class Dbg {
 
-    @SerializedName("addOn")
-    @Expose
-    private List<AddOn> addOn = null;
-    @SerializedName("blockStatus")
-    @Expose
+    @JsonProperty("addOn")
+    private List<AddOn> addOn;
+    @JsonProperty("blockStatus")
     private String blockStatus;
-    @SerializedName("boards")
-    @Expose
-    private List<Board> boards = null;
-    @SerializedName("columns")
-    @Expose
+    @JsonProperty("boards")
+    private List<Board> boards;
+    @JsonProperty("columns")
     private Integer columns;
-    @SerializedName("cost")
-    @Expose
+    @JsonProperty("cost")
     private Double cost;
-    @SerializedName("creationTime")
-    @Expose
-    private BigInteger creationTime;
-    @SerializedName("updatedTime")
-    @Expose
-    private BigInteger updatedTime;
-    @SerializedName("discount")
-    @Expose
+    @JsonProperty("creationTime")
+    private Long creationTime;
+    @JsonProperty("updatedTime")
+    private Long updatedTime;
+    @JsonProperty("discount")
     private Double discount;
-    @SerializedName("gameId")
-    @Expose
+    @JsonProperty("gameId")
     private Integer gameId;
-    @SerializedName("multipliers")
-    @Expose
-    private List<Integer> multipliers = null;
-    @SerializedName("participatingDraws")
-    @Expose
+    @JsonProperty("isPrimary")
+    private Boolean isPrimary;
+    @JsonProperty("multipliers")
+    private List<Object> multipliers;
+    @JsonProperty("options")
+    private List<String> options;
+    @JsonProperty("participatingDraws")
     private ParticipatingDraws participatingDraws;
-    @SerializedName("status")
-    @Expose
+    @JsonProperty("status")
     private String status;
-    @SerializedName("selectionsType")
-    @Expose
+    @JsonProperty("selectionsType")
     private Integer selectionsType;
-    @SerializedName("wagerOptions")
-    @Expose
-    private WagerOptions wagerOptions;
+    @JsonProperty("wagerType")
+    private Integer wagerType;
+    @JsonIgnore
+    private final Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
+    @JsonProperty("addOn")
     public List<AddOn> getAddOn() {
         return addOn;
     }
 
+    @JsonProperty("addOn")
     public void setAddOn(List<AddOn> addOn) {
         this.addOn = addOn;
     }
 
+    @JsonProperty("blockStatus")
     public String getBlockStatus() {
         return blockStatus;
     }
 
+    @JsonProperty("blockStatus")
     public void setBlockStatus(String blockStatus) {
         this.blockStatus = blockStatus;
     }
 
+    @JsonProperty("boards")
     public List<Board> getBoards() {
         return boards;
     }
 
+    @JsonProperty("boards")
     public void setBoards(List<Board> boards) {
         this.boards = boards;
     }
 
+    @JsonProperty("columns")
     public Integer getColumns() {
         return columns;
     }
 
+    @JsonProperty("columns")
     public void setColumns(Integer columns) {
         this.columns = columns;
     }
 
+    @JsonProperty("cost")
     public Double getCost() {
         return cost;
     }
 
+    @JsonProperty("cost")
     public void setCost(Double cost) {
         this.cost = cost;
     }
 
-    public BigInteger getCreationTime() {
+    @JsonProperty("creationTime")
+    public Long getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(BigInteger creationTime) {
+    @JsonProperty("creationTime")
+    public void setCreationTime(Long creationTime) {
         this.creationTime = creationTime;
     }
 
-    public BigInteger getUpdatedTime() {
+    @JsonProperty("updatedTime")
+    public Long getUpdatedTime() {
         return updatedTime;
     }
 
-    public void setUpdatedTime(BigInteger updatedTime) {
+    @JsonProperty("updatedTime")
+    public void setUpdatedTime(Long updatedTime) {
         this.updatedTime = updatedTime;
     }
 
+    @JsonProperty("discount")
     public Double getDiscount() {
         return discount;
     }
 
+    @JsonProperty("discount")
     public void setDiscount(Double discount) {
         this.discount = discount;
     }
 
+    @JsonProperty("gameId")
     public Integer getGameId() {
         return gameId;
     }
 
+    @JsonProperty("gameId")
     public void setGameId(Integer gameId) {
         this.gameId = gameId;
     }
 
-    public List<Integer> getMultipliers() {
+    @JsonProperty("isPrimary")
+    public Boolean getIsPrimary() {
+        return isPrimary;
+    }
+
+    @JsonProperty("isPrimary")
+    public void setIsPrimary(Boolean isPrimary) {
+        this.isPrimary = isPrimary;
+    }
+
+    @JsonProperty("multipliers")
+    public List<Object> getMultipliers() {
         return multipliers;
     }
 
-    public void setMultipliers(List<Integer> multipliers) {
+    @JsonProperty("multipliers")
+    public void setMultipliers(List<Object> multipliers) {
         this.multipliers = multipliers;
     }
 
+    @JsonProperty("options")
+    public List<String> getOptions() {
+        return options;
+    }
+
+    @JsonProperty("options")
+    public void setOptions(List<String> options) {
+        this.options = options;
+    }
+
+    @JsonProperty("participatingDraws")
     public ParticipatingDraws getParticipatingDraws() {
         return participatingDraws;
     }
 
+    @JsonProperty("participatingDraws")
     public void setParticipatingDraws(ParticipatingDraws participatingDraws) {
         this.participatingDraws = participatingDraws;
     }
 
+    @JsonProperty("status")
     public String getStatus() {
         return status;
     }
 
+    @JsonProperty("status")
     public void setStatus(String status) {
         this.status = status;
     }
 
+    @JsonProperty("selectionsType")
     public Integer getSelectionsType() {
         return selectionsType;
     }
 
+    @JsonProperty("selectionsType")
     public void setSelectionsType(Integer selectionsType) {
         this.selectionsType = selectionsType;
     }
 
-    public WagerOptions getWagerOptions() {
-        return wagerOptions;
+    @JsonProperty("wagerType")
+    public Integer getWagerType() {
+        return wagerType;
     }
 
-    public void setWagerOptions(WagerOptions wagerOptions) {
-        this.wagerOptions = wagerOptions;
+    @JsonProperty("wagerType")
+    public void setWagerType(Integer wagerType) {
+        this.wagerType = wagerType;
+    }
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
 }

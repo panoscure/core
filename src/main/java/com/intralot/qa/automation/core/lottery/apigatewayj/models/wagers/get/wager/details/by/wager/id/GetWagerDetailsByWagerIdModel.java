@@ -1,121 +1,110 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id;
 
+import java.util.LinkedHashMap;
 import java.util.List;
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "wager",
+        "winnings",
+        "serialNumbers",
+        "metadata",
+        "pilot",
+        "teamIndex"
+})
 public class GetWagerDetailsByWagerIdModel {
 
-    @SerializedName("wager")
-    @Expose
+    @JsonProperty("wager")
     private Wager wager;
-    @SerializedName("winnings")
-    @Expose
-    private List<Winning> winnings = null;
-    @SerializedName("serialNumbers")
-    @Expose
-    private List<String> serialNumbers = null;
-    @SerializedName("metadata")
-    @Expose
+    @JsonProperty("winnings")
+    private List<Winning> winnings;
+    @JsonProperty("serialNumbers")
+    private List<String> serialNumbers;
+    @JsonProperty("metadata")
     private Metadata metadata;
-    @SerializedName("promotionOutcomes")
-    @Expose
-    private List<PromotionOutcome> promotionOutcomes = null;
-    @SerializedName("pilot")
-    @Expose
+    @JsonProperty("pilot")
     private Boolean pilot;
-    @SerializedName("discount")
-    @Expose
-    private Metadata discount;
-    @SerializedName("code")
-    @Expose
-    private Metadata code;
-    @SerializedName("type")
-    @Expose
-    private Metadata type;
-    @SerializedName("source")
-    @Expose
-    private Metadata source;
+    @JsonProperty("teamIndex")
+    private Integer teamIndex;
+    @JsonIgnore
+    private final Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
+    @JsonProperty("wager")
     public Wager getWager() {
         return wager;
     }
 
+    @JsonProperty("wager")
     public void setWager(Wager wager) {
         this.wager = wager;
     }
 
+    @JsonProperty("winnings")
     public List<Winning> getWinnings() {
         return winnings;
     }
 
+    @JsonProperty("winnings")
     public void setWinnings(List<Winning> winnings) {
         this.winnings = winnings;
     }
 
+    @JsonProperty("serialNumbers")
     public List<String> getSerialNumbers() {
         return serialNumbers;
     }
 
+    @JsonProperty("serialNumbers")
     public void setSerialNumbers(List<String> serialNumbers) {
         this.serialNumbers = serialNumbers;
     }
 
+    @JsonProperty("metadata")
     public Metadata getMetadata() {
         return metadata;
     }
 
+    @JsonProperty("metadata")
     public void setMetadata(Metadata metadata) {
         this.metadata = metadata;
     }
 
+    @JsonProperty("pilot")
     public Boolean getPilot() {
         return pilot;
     }
 
+    @JsonProperty("pilot")
     public void setPilot(Boolean pilot) {
         this.pilot = pilot;
     }
 
-    public List<PromotionOutcome> getPromotionOutcomes() {
-        return promotionOutcomes;
+    @JsonProperty("teamIndex")
+    public Integer getTeamIndex() {
+        return teamIndex;
     }
 
-    public void setPromotionOutcomes(List<PromotionOutcome> promotionOutcomes) {
-        this.promotionOutcomes = promotionOutcomes;
+    @JsonProperty("teamIndex")
+    public void setTeamIndex(Integer teamIndex) {
+        this.teamIndex = teamIndex;
     }
 
-    public Metadata getDiscount() {
-        return discount;
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
     }
 
-    public void setDiscount(Metadata discount) {
-        this.discount = discount;
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
 
-    public Metadata getCode() {
-        return code;
-    }
-
-    public void setCode(Metadata code) {
-        this.code = code;
-    }
-
-    public Metadata getType() {
-        return type;
-    }
-
-    public void setType(Metadata type) {
-        this.type = type;
-    }
-
-    public Metadata getSource() {
-        return source;
-    }
-
-    public void setSource(Metadata source) {
-        this.source = source;
-    }
 }
-
