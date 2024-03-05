@@ -28,9 +28,6 @@ public class GetWagerDetailsByWagerIdModel {
     @SerializedName("discount")
     @Expose
     private Metadata discount;
-    @SerializedName("QPSelections")
-    @Expose
-    private Metadata QPSelections;
     @SerializedName("code")
     @Expose
     private Metadata code;
@@ -95,15 +92,6 @@ public class GetWagerDetailsByWagerIdModel {
 
     public void setDiscount(Metadata discount) {
         this.discount = discount;
-    }
-
-
-    public Metadata getQPSelections() {
-        return QPSelections;
-    }
-
-    public void setQPSelections(Metadata QPSelections) {
-        this.QPSelections = QPSelections;
     }
 
     public Metadata getCode() {
