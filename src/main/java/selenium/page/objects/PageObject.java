@@ -22,7 +22,7 @@ public class PageObject {
             By.xpath("//*[contains(@class, 'top-right')]//*[contains(text(),'Success') or contains(text(),'Save') or contains(text(),'success') or contains(text(),'Fetch')]");
     protected static final By FETCHING_DATA_LOADER = By.className("block-ui-overlay");
     protected static final int WEB_DRIVER_WAIT_TIMEOUT = 30;
-
+    protected static final Long DRIVER_WAIT_TIMEOUT = 30L;
     public PageObject(WebDriver webDriver) {
         PageObject.webDriver = webDriver;
         PageFactory.initElements(webDriver, this);
