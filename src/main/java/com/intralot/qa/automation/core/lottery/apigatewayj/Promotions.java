@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -14,7 +15,7 @@ public class Promotions {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/promotions/serialNumber/{promotionId}/redeem", promotionId);
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/promotions/serialNumber/{promotionId}/redeem", promotionId);
     }
 
     public static Object redeemAVoucherGiftPromotionBySerialNumberV1_1(Map<String, String> headers, String promotionId) {
@@ -22,7 +23,7 @@ public class Promotions {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.1/promotions/serialNumber/{promotionId}/redeem", promotionId);
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.1/promotions/serialNumber/{promotionId}/redeem", promotionId);
     }
 
     public static Object claimAHighWinningRealMoneyPromotionBySerialNumber(Map<String, String> headers, String playBody) {
@@ -31,7 +32,7 @@ public class Promotions {
                 .body(playBody)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/promotions/claim");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/promotions/claim");
     }
 
     public static Object retrieveAVoucherGiftPromotionBySerialNumber(Map<String, String> headers, Map<String, String> queryParams, String promotionId) {
@@ -40,7 +41,7 @@ public class Promotions {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.1/promotions/serialNumber/{promotionId}", promotionId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.1/promotions/serialNumber/{promotionId}", promotionId);
     }
 
     public static Object retrieveOutcomesByWagerSerialNumber(Map<String, String> headers, Map<String, String> queryParams, String wagerSerialNumber) {
@@ -49,6 +50,6 @@ public class Promotions {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.1/promotions/wager/{wagerSerialNumber}/outcomes", wagerSerialNumber);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.1/promotions/wager/{wagerSerialNumber}/outcomes", wagerSerialNumber);
     }
 }

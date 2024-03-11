@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -15,7 +16,7 @@ public class PAM {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/players/{id}/limits",playerId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/players/{id}/limits",playerId);
     }
 
     public static Object updatePlayerLimits(Map<String, String> headers, Integer playerId, String body) {
@@ -24,7 +25,7 @@ public class PAM {
                 .body(body)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/players/{id}/limits",playerId);
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/players/{id}/limits",playerId);
     }
 
     public static Object getStates(Map<String, String> headers) {
@@ -32,7 +33,7 @@ public class PAM {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/config/states");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/config/states");
     }
 
     public static Object getCities(Map<String, String> headers) {
@@ -40,7 +41,7 @@ public class PAM {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/config/cities");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/config/cities");
     }
 
     public static Object PAMCreateFavoritePlayslip(Map<String, String> headers, String body) {
@@ -52,7 +53,7 @@ public class PAM {
                 .accept("application/json")
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/my-favorite-playslips");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-favorite-playslips");
     }
 
 }

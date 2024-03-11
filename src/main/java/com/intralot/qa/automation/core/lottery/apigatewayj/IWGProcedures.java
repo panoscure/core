@@ -1,6 +1,7 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
 import com.intralot.qa.automation.core.lottery.apigatewayj.requests.iwg.procedures.iwg.rgs.IwgRgsRequest;
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -20,7 +21,7 @@ public class IWGProcedures {
                 .accept("application/json")
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/iwg");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/iwg");
     }
 
 }

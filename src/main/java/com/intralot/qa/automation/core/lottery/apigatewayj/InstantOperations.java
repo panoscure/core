@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -16,7 +17,7 @@ public class InstantOperations {
                 .headers(headers)
                 .body(body)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/instants/winnings");
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/instants/winnings");
     }
 
     public static Object payInstants(Map<String, String> headers, Object body) {
@@ -25,7 +26,7 @@ public class InstantOperations {
                 .headers(headers)
                 .body(body)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/instants/validation");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/instants/validation");
     }
 
     public static Object sellInstantByRange(Map<String, String> headers, String firstInstantBarcode , String lastInstantBarcode ) {
@@ -33,7 +34,7 @@ public class InstantOperations {
         return given()
                 .headers(headers)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj")  + "/api/v1.0/instants/{firstInstantBarcode}/{lastInstantBarcode}", firstInstantBarcode, lastInstantBarcode);
+                .post(CustomProperties.getPropertyValue("apigatewayj")  + "/api/v1.0/instants/{firstInstantBarcode}/{lastInstantBarcode}", firstInstantBarcode, lastInstantBarcode);
     }
 
     public static Object sellInstant(Map<String, String> headers, String barcode, String username) {
@@ -42,7 +43,7 @@ public class InstantOperations {
                 .headers(headers)
                 .body("{\"username\": \""+username+"\"}")
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj")  + "/api/v1.0/instants/{barcode}", barcode);
+                .post(CustomProperties.getPropertyValue("apigatewayj")  + "/api/v1.0/instants/{barcode}", barcode);
     }
 
     public static Object cancelInstantSale(Map<String, String> headers, String barcode, String username) {
@@ -51,7 +52,7 @@ public class InstantOperations {
                 .headers(headers)
                 .body("{\"username\": \""+username+"\"}")
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj")  + "/api/v1.0/instants/{barcode}/status", barcode);
+                .put(CustomProperties.getPropertyValue("apigatewayj")  + "/api/v1.0/instants/{barcode}/status", barcode);
     }
 
 }

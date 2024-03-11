@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -17,7 +18,7 @@ public class WagersV3 {
                 .headers(headers)
                 .body(VALIDATE_BODY)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v3.0/wagers/{serialNumber}/validation", serialNumber);
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/wagers/{serialNumber}/validation", serialNumber);
     }
 
     public static Object validateWagerV3(Map<String, String> headers, String serialNumber, String body) {
@@ -26,6 +27,6 @@ public class WagersV3 {
                 .headers(headers)
                 .body(body)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v3.0/wagers/{serialNumber}/validation", serialNumber);
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/wagers/{serialNumber}/validation", serialNumber);
     }
 }

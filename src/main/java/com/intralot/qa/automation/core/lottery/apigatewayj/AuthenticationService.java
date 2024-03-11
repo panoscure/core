@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -19,7 +20,7 @@ public class AuthenticationService {
                         "}")
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/authentication");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/authentication");
     }
 
     public static String playerSignOnExtractSessionToken(Map<String, String> headers,String username,String password) {
@@ -31,7 +32,7 @@ public class AuthenticationService {
                         "}")
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/authentication")
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/authentication")
                 .then()
                 .statusCode(HTTP_OK)
                 .extract().path("sessionToken");
@@ -43,7 +44,7 @@ public class AuthenticationService {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .delete(System.getProperty("apigatewayj") + "/api/v1.0/authentication");
+                .delete(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/authentication");
     }
 
 
@@ -53,7 +54,7 @@ public class AuthenticationService {
                 .when()
                 .body(body)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/token")
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/token")
                 .then()
                 .statusCode(HTTP_OK)
                 .extract().path("sessionToken");

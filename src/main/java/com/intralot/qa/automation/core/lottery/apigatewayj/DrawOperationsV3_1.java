@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -15,7 +16,7 @@ public class DrawOperationsV3_1 {
         return given()
                 .headers(headers)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v3.1/draws/{gameId}/active", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.1/draws/{gameId}/active", gameId);
     }
 
     public static Object getDrawV3_1(Map<String, String> headers, String gameId, int drawId) {
@@ -23,7 +24,7 @@ public class DrawOperationsV3_1 {
         return given()
                 .headers(headers)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v3.1/draws/{gameId}/{drawId}", gameId, drawId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.1/draws/{gameId}/{drawId}", gameId, drawId);
     }
 
     public static Object getDrawV3_1_WithSpecificStatus(Map<String, String> headers, String gameId, int drawId, String status) {
@@ -32,7 +33,7 @@ public class DrawOperationsV3_1 {
                 .queryParam(status)
                 .headers(headers)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v3.1/draws/{gameId}/{drawId}/", gameId, drawId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.1/draws/{gameId}/{drawId}/", gameId, drawId);
     }
 
 }

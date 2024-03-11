@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -17,7 +18,7 @@ public class MyProfileService {
                 .body(body)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/my-profile/password");
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-profile/password");
     }
 
     public static Object getMyWallet(Map<String, String> headers) {
@@ -26,7 +27,7 @@ public class MyProfileService {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/my-wallet");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-wallet");
     }
 
     public static Object getMyProfile(Map<String, String> headers) {
@@ -35,7 +36,7 @@ public class MyProfileService {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/my-profile");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-profile");
     }
 
     public static Object getMyFavoritePlayslips(Map<String, String> headers, Map<String, String> query) {
@@ -45,7 +46,7 @@ public class MyProfileService {
                 .queryParams(query)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/my-favorite-playslips");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-favorite-playslips");
     }
 
     public static Object deleteMyFavorite(Map<String, String> headers, Integer id) {
@@ -54,7 +55,7 @@ public class MyProfileService {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .delete(System.getProperty("apigatewayj") + "/api/v1.0/my-favorite-playslips/{id}", id);
+                .delete(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-favorite-playslips/{id}", id);
     }
 
     public static Object updateMyProfile(Map<String, String> headers, String body) {
@@ -64,7 +65,7 @@ public class MyProfileService {
                 .body(body)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/my-profile");
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-profile");
     }
 
     public static Object getMyLimits(Map<String, String> headers) {
@@ -73,7 +74,7 @@ public class MyProfileService {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/my-limits");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-limits");
     }
 
     public static Object updateMyLimits(Map<String, String> headers, String body) {
@@ -83,6 +84,6 @@ public class MyProfileService {
                 .body(body)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/my-limits");
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/my-limits");
     }
 }

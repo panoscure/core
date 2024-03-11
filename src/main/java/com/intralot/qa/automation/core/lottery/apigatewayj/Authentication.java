@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -28,7 +29,7 @@ public class Authentication {
                 .body(authBody)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/terminal-actions/signon")
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/terminal-actions/signon")
                 .then()
                 .statusCode(HTTP_OK)
                 .extract().path("access_token");
@@ -41,7 +42,7 @@ public class Authentication {
                 .formParams(formData)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/authentication/token");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/authentication/token");
     }
 
     public static Object validateTheGivenToken(Map<String, String> headers, Map<String, String> queryParams) {
@@ -50,7 +51,7 @@ public class Authentication {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/authentication/check_token");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/authentication/check_token");
     }
 
 }

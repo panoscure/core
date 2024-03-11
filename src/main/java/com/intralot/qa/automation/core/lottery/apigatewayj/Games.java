@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -29,7 +30,7 @@ public class Games {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/games/{gameId}/versions/active", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/games/{gameId}/versions/active", gameId);
     }
 
     public static Object returnsAListWithAllRecordsForASpecificGame(Map<String, String> headers, String gameId, Map<String, String> queryParams) {
@@ -39,7 +40,7 @@ public class Games {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/games/{gameId}/versions", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/games/{gameId}/versions", gameId);
     }
 
     public static Object returnsAListWithAllActiveRecordsForAllGames(Map<String, String> headers, Map<String, String> queryParams) {
@@ -49,7 +50,7 @@ public class Games {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/games/active");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/games/active");
     }
 
     public static Object returnsTheSpecifiedRecordForTheSpecifiedGame(Map<String, String> headers, String gameId, String recordId, Map<String, String> queryParams) {
@@ -59,6 +60,6 @@ public class Games {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/games/{gameId}/versions/{recordId}", gameId, recordId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/games/{gameId}/versions/{recordId}", gameId, recordId);
     }
 }

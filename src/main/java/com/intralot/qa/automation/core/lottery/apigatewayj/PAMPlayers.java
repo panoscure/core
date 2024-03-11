@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -20,7 +21,7 @@ public class PAMPlayers {
                 .accept("application/json")
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/players/external/games/session");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/players/external/games/session");
     }
 
     public static Object setsPlayersLimits(Map<String, String> headers, String limitType, String interval, double limitParam, String licenseType, int channelId) {
@@ -37,7 +38,7 @@ public class PAMPlayers {
                 .accept("application/json")
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/players/limits");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/players/limits");
     }
 
 }

@@ -1,6 +1,7 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
 import com.google.common.collect.Multimap;
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,7 +18,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/active");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/active");
     }
 
     public static Object getDrawForAGameByVisualDrawNumber(Map<String, String> headers, Map<String, String> queryParams,
@@ -27,7 +28,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/visual-draw/{visualDraw}", gameId, visualDraw);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/visual-draw/{visualDraw}", gameId, visualDraw);
     }
 
     public static Object getDrawsForAGameByDrawIdRange(Map<String, String> headers, Map<String, String> queryParams,
@@ -37,7 +38,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-id/{fromDrawId}/{toDrawId}", gameId, fromDrawId, toDrawId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-id/{fromDrawId}/{toDrawId}", gameId, fromDrawId, toDrawId);
     }
 
     public static Object getDraw(Map<String, String> headers, Map<String, String> queryParams,
@@ -47,7 +48,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/{drawId}/", gameId, drawId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/{drawId}/", gameId, drawId);
     }
 
     public static Object getTheActiveDrawForAGame(Map<String, String> headers, Map<String, String> queryParams,
@@ -57,7 +58,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/active", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/active", gameId);
     }
 
     public static Object getTheLastDrawWithResultsOrPendingResultsAndTheActiveDrawForAGame(Map<String, String> headers, Map<String, String> queryParams,
@@ -67,7 +68,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/last-result-and-active", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/last-result-and-active", gameId);
     }
 
     public static Object getLastDrawsForAGame(Map<String, String> headers, Map<String, String> queryParams,
@@ -77,7 +78,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/last/{limit}", gameId, limit);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/last/{limit}", gameId, limit);
     }
 
     public static Object getUpcomingDrawsForAGame(Map<String, String> headers, Map<String, String> queryParams,
@@ -87,7 +88,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/upcoming/{limit}", gameId, limit);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/upcoming/{limit}", gameId, limit);
     }
 
     public static Object getDrawIdsForAGameByDateRange(Map<String, String> headers, Map<String, String> queryParams,
@@ -97,7 +98,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-date/{fromDate}/{toDate}/draw-id", gameId, fromDate, toDate);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-date/{fromDate}/{toDate}/draw-id", gameId, fromDate, toDate);
     }
 
 
@@ -108,7 +109,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/" + gameId + "/draw-date/" + fromDate + "/" + toDate);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/" + gameId + "/draw-date/" + fromDate + "/" + toDate);
     }
 
     /**********MULTIMAP PARAMETERS*************/
@@ -126,7 +127,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/active");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/active");
     }
 
 
@@ -144,7 +145,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-date/{fromDate}/{toDate}", gameId, fromDate, toDate);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-date/{fromDate}/{toDate}", gameId, fromDate, toDate);
     }
 
 
@@ -162,7 +163,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-id/{fromDrawId}/{toDrawId}", gameId, fromId, toId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-id/{fromDrawId}/{toDrawId}", gameId, fromId, toId);
     }
 
     public static Object getTheActiveDrawForAGameMultimap(Map<String, String> headers, Multimap<String, String> queryParamsMulti, Map<String, String> queryParams,
@@ -178,7 +179,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/active", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/active", gameId);
     }
 
     public static Object getDrawForAGameByVisualDrawNumberMultimap(Map<String, String> headers, Multimap<String, String> queryParamsMulti, Map<String, String> queryParams,
@@ -194,7 +195,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(3))
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/visual-draw/{visualDraw}", gameId, visualDraw);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/visual-draw/{visualDraw}", gameId, visualDraw);
     }
 
     public static Object getDrawMultimap(Map<String, String> headers, Multimap<String, String> queryParamsMulti, Map<String, String> queryParams,
@@ -210,7 +211,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/{drawId}", gameId, drawId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/{drawId}", gameId, drawId);
     }
 
     public static Object getTheLastDrawWithResultsOrPendingResultsAndTheActiveDrawForAGameMultimap(Map<String, String> headers, Multimap<String, String> queryParamsMulti, Map<String, String> queryParams,
@@ -226,7 +227,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/" + gameId + "/last-result-and-active");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/" + gameId + "/last-result-and-active");
     }
 
     public static Object getLastDrawsForAGameMultimap(Map<String, String> headers, Multimap<String, String> queryParamsMulti, Map<String, String> queryParams,
@@ -242,7 +243,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/last/{limit}", gameId, limit);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/last/{limit}", gameId, limit);
     }
 
     public static Object getUpcomingDrawsForAGameMultimap(Map<String, String> headers, Multimap<String, String> queryParamsMulti, Map<String, String> queryParams,
@@ -258,7 +259,7 @@ public class DrawOperationsV3_0 {
                 .queryParams("property", ((List<String>) paramsMulti).get(4))
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/upcoming/{limit}", gameId, limit);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/upcoming/{limit}", gameId, limit);
     }
     /**********MULTIMAP PARAMETERS*************/
 
@@ -269,7 +270,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/active");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/active");
     }
 
     public static Object getDrawsForAGameByDateRangeNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -278,7 +279,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-date/{fromDate}/{toDate}", gameId, fromDate, toDate);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-date/{fromDate}/{toDate}", gameId, fromDate, toDate);
     }
 
     public static Object getFromToDateDrawIdsNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -287,7 +288,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/" + gameId + "/draw-date/" + fromDate + "/" + toDate + "/draw-id");
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/" + gameId + "/draw-date/" + fromDate + "/" + toDate + "/draw-id");
     }
 
 
@@ -297,7 +298,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-id/{fromDrawId}/{toDrawId}", gameId, fromId, toId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/draw-id/{fromDrawId}/{toDrawId}", gameId, fromId, toId);
     }
 
     public static Object getTheActiveDrawForAGameNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -306,7 +307,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/active", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/active", gameId);
     }
 
     public static Object getDrawForAGameByVisualDrawNumberNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -315,7 +316,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/visual-draw/{visualDraw}", gameId, visualDraw);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/visual-draw/{visualDraw}", gameId, visualDraw);
     }
 
     public static Object getDrawNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -324,7 +325,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/{drawId}", gameId, drawId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/{drawId}", gameId, drawId);
     }
 
     public static Object getTheLastDrawWithResultsOrPendingResultsAndTheActiveDrawForAGameMultimapNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -333,7 +334,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/last-result-and-active", gameId);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/last-result-and-active", gameId);
     }
 
     public static Object getLastDrawsForAGameNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -342,7 +343,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/last/{limit}", gameId, limit);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/last/{limit}", gameId, limit);
     }
 
     public static Object getUpcomingDrawsForAGameNoGuid(Map<String, String> headers, Map<String, String> queryParams,
@@ -351,7 +352,7 @@ public class DrawOperationsV3_0 {
                 .headers(headers)
                 .queryParams(queryParams)
                 .when()
-                .get(System.getProperty("apigatewayj") + "/api/v3.0/draws/{gameId}/upcoming/{limit}", gameId, limit);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v3.0/draws/{gameId}/upcoming/{limit}", gameId, limit);
     }
 
     /*********NoGUIDCalls**********************/

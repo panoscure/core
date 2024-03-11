@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj.requests;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -16,7 +17,7 @@ public class PlayerService {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .delete(System.getProperty("apigatewayj") + "/api/v1.0/players/{username}/password",password);
+                .delete(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/players/{username}/password",password);
     }
 
     public static Object resendOtp(Map<String, String> headers, Integer id, String body) {
@@ -26,7 +27,7 @@ public class PlayerService {
                 .body(body)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .delete(System.getProperty("apigatewayj") + "/api/v1.0/players/{id}/otp/resend",id);
+                .delete(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/players/{id}/otp/resend",id);
     }
 
     public static Object changePassword(Map<String, String> headers, Integer id, String body) {
@@ -36,7 +37,7 @@ public class PlayerService {
                 .body(body)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/players/{id}/password",id);
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/players/{id}/password",id);
     }
 
 }

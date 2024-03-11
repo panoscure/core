@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -15,7 +16,7 @@ public class AccountingTerminalReports {
                 .headers(headers)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/terminal-reports/retailer-limits")
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/terminal-reports/retailer-limits")
                 .then()
                 .statusCode(HTTP_OK)
                 .extract().response();
@@ -27,7 +28,7 @@ public class AccountingTerminalReports {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/terminal-reports/date-range-summary")
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/terminal-reports/date-range-summary")
                 .then()
                 .statusCode(HTTP_OK)
                 .extract().response();
