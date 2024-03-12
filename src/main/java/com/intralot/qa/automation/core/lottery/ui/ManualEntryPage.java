@@ -226,11 +226,11 @@ public class ManualEntryPage extends PageObject {
 
     public String getCost() {
         SeleniumWaits.visibilityOf(webDriver, wagerCost);
-        return wagerCost.getText().substring("Cost".length()).trim();
+        return wagerCost.getText().trim();
     }
 
     public int getColumns() {
-        String columns = wagerColumns.getText().substring("Columns".length()).trim();
+        String columns = wagerColumns.getText().trim();
         return Integer.parseInt(columns);
     }
 
@@ -255,7 +255,7 @@ public class ManualEntryPage extends PageObject {
     }
 
     public String getFirstDrawAndVisualDraw() {
-        return this.firstDraw.getText().substring("First Draw".length()).trim();
+        return this.firstDraw.getText().trim();
     }
 
     public int getLastDraw() {
@@ -263,7 +263,7 @@ public class ManualEntryPage extends PageObject {
     }
 
     public String getLastDrawAndVisualDraw() {
-        return this.lastDraw.getText().substring("Last Draw".length()).trim();
+        return this.lastDraw.getText().trim();
     }
 
     public int getMultipleDraws() {
