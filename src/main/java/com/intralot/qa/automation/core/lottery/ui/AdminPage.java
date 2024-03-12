@@ -14,7 +14,7 @@ public class AdminPage extends PageObject {
     private static final By alertSuccessMessageTopRight =
             By.xpath("//*[@class = 'top-right']//*[contains(text(),'Fetch') or contains(text(),'Success') or contains(text(),'Ok')]");
 
-    @FindBy(linkText = "WAGER OPERATIONS")
+    @FindBy(linkText = "Wager Operations")
     private WebElement wagerOperationsBtn;
 
     @FindBy(xpath = "//span[text()='Monitoring and Operations']")
