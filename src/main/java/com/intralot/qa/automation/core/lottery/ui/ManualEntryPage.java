@@ -43,10 +43,10 @@ public class ManualEntryPage extends PageObject {
     @FindBy(xpath = "//a[contains(text(),'Wager Details for game:')]")
     private WebElement wagerDetailsButton;
 
-    @FindBy(xpath = "//div[./label[@for='wager_cost']]")
+    @FindBy(xpath = "//label[text()='Cost']//following-sibling::div//div")
     private WebElement wagerCost;
 
-    @FindBy(xpath = "//div[./label[@for='wager_columns']]")
+    @FindBy(xpath = "//label[text()='Columns']//following-sibling::div//div")
     private WebElement wagerColumns;
 
     @FindBy(xpath = "//div[./label[@for='channel']]")
@@ -61,10 +61,10 @@ public class ManualEntryPage extends PageObject {
     @FindBy(xpath = "//div[./label[@for='wager_draws']]")
     private WebElement numberOfDraws;
 
-    @FindBy(xpath = "//div[./label[@for='wager_firstDraw']]")
+    @FindBy(xpath = "//label[text()='First Draw']//following-sibling::div//div")
     private WebElement firstDraw;
 
-    @FindBy(xpath = "//div[./label[@for='wager_lastDraw']]")
+    @FindBy(xpath = "//label[text()='Last Draw']//following-sibling::div//div")
     private WebElement lastDraw;
 
     @FindBy(xpath = "//div[./label[@for='wager_game']]")
