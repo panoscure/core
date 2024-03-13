@@ -43,9 +43,18 @@ public class RetrieveSpecificDrawForRequestedGameCodeModel {
     @SerializedName("activationTime")
     @Expose
     private BigInteger activationTime;
+    @SerializedName("typeId")
+    @Expose
+    private Integer typeId;
     @SerializedName("reservedFund")
     @Expose
     private Double reservedFund;
+    @SerializedName("extraCategories")
+    @Expose
+    private List<Object> extraCategories = null;
+    @SerializedName("winAmountType")
+    @Expose
+    private Integer winAmountType;
 
     public Integer getGameId() {
         return gameId;
@@ -157,5 +166,29 @@ public class RetrieveSpecificDrawForRequestedGameCodeModel {
 
     public void setReservedFund(Double reservedFund) {
         this.reservedFund = reservedFund;
+    }
+
+    public Integer getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    public List<Object> getExtraCategories() {
+        return extraCategories;
+    }
+
+    public void setExtraCategories(List<Object> extraCategories) {
+        this.extraCategories = extraCategories;
+    }
+
+    public Integer getWinAmountType() {
+        return winAmountType;
+    }
+
+    public void setWinAmountType(Integer winAmountType) {
+        this.winAmountType = winAmountType;
     }
 }

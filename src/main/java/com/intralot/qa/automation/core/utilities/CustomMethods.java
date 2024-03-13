@@ -2,13 +2,12 @@ package com.intralot.qa.automation.core.utilities;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
-import io.restassured.response.Response;
 import com.intralot.qa.automation.core.lottery.game.scheduler.LotteryDrawOperations;
 import com.intralot.qa.automation.core.lottery.game.scheduler.models.lottery.draw.operations.retrieve.active.draw.requested.game.code.RetrieveActiveDrawForRequestedGameCodeModel;
 import com.intralot.qa.automation.core.lottery.game.scheduler.models.lottery.draw.operations.retrieve.active.draw.requested.game.code.RetrieveSpecificDrawForRequestedGameCodeModel;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
+import io.restassured.response.Response;
 
 import java.time.Duration;
 import java.util.*;
@@ -21,7 +20,7 @@ import static java.net.HttpURLConnection.HTTP_OK;
 import static org.awaitility.Awaitility.await;
 import static org.hamcrest.CoreMatchers.describedAs;
 import static org.hamcrest.CoreMatchers.is;
-import com.intralot.qa.automation.core.lottery.game.scheduler.models.lottery.draw.operations.retrieve.active.draw.requested.game.code.RetrieveActiveDrawForRequestedGameCodeModel;
+
 public class CustomMethods {
 
     public static void setWinningNumbersForPendingDraws(Integer gameId, String winningNumbers) {
@@ -61,7 +60,7 @@ public class CustomMethods {
                     given()
                             .accept(JSON)
                             .relaxedHTTPSValidation()
-                            .get(System.getProperty("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId)
+                            .get(CustomProperties.getPropertyValue("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId)
                             .as(RetrieveSpecificDrawForRequestedGameCodeModel.class)
                             .getStatus() == 4);
         } catch (org.awaitility.core.ConditionTimeoutException exception) {
@@ -76,7 +75,7 @@ public class CustomMethods {
             await().pollInterval(Duration.ofMillis(500)).atMost(2, TimeUnit.MINUTES).until(() ->
                     given()
                             .accept(JSON)
-                            .get(System.getProperty("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId)
+                            .get(CustomProperties.getPropertyValue("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId)
                             .as(RetrieveSpecificDrawForRequestedGameCodeModel.class)
                             .getStatus() == 16);
         } catch (org.awaitility.core.ConditionTimeoutException exception) {
@@ -91,7 +90,7 @@ public class CustomMethods {
                     given()
                             .accept(JSON)
                             .relaxedHTTPSValidation()
-                            .get(System.getProperty("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId)
+                            .get(CustomProperties.getPropertyValue("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId)
                             .as(RetrieveSpecificDrawForRequestedGameCodeModel.class)
                             .getStatus() == 6);
         } catch (org.awaitility.core.ConditionTimeoutException exception) {
@@ -139,7 +138,7 @@ public class CustomMethods {
                         .body(playBody)
                         .when()
                         .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                        .post(System.getProperty("apigatewayj") + "/api/v1.0/wagers")
+                        .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/wagers")
                         .then()
                         .statusCode(describedAs("---------- PLAY WAGER should return 200!", is(HTTP_OK)))
                         .extract()
@@ -159,7 +158,7 @@ public class CustomMethods {
                         " }")
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("apigatewayj") + "/api/v1.0/wagers/" + serialNumber + "/status").then().log().all().statusCode(200);
+                .put(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/wagers/" + serialNumber + "/status").then().log().all().statusCode(200);
     }
 
     public static Object salesSummaryReportByDate(Map<String, String> headers, Map<String, String> queryParams) {
@@ -183,7 +182,7 @@ public class CustomMethods {
                 .contentType(JSON)
                 .body("{\"status\":6}")
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .put(System.getProperty("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId);
+                .put(CustomProperties.getPropertyValue("gamescheduler") + "/game-scheduler/api/v1.0/lottery/draws/{gameId}/{drawId}", gameId, drawId);
     }
 
     public static Object retrieveTheWinningsForTheWagerWithLevel(Map<String, String> headers, String serialNumber, String level) {
@@ -192,7 +191,7 @@ public class CustomMethods {
                 .headers(headers)
                 .queryParam("level", level)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/wagers/{serialNumber}/winnings", serialNumber);
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/wagers/{serialNumber}/winnings", serialNumber);
     }
 
     public static Object winningsForTheWagerProvidedInPayloadWithLevel(Map<String, String> headers, String checkNumbersBody, String level) {
@@ -204,7 +203,7 @@ public class CustomMethods {
                 .when()
                 .filter(new RequestLoggingFilter())
                 .filter(new ResponseLoggingFilter())
-                .post(System.getProperty("apigatewayj") + "/api/v1.0/wagers/check-numbers");
+                .post(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/wagers/check-numbers");
     }
 
     public static Object summaryReportByDateMultiMap(Map<String, String> headers, Map<String, String> queryParams) {
@@ -248,7 +247,7 @@ public class CustomMethods {
                 .queryParams(queryParams)
                 .when()
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("apigatewayj") + "/api/v1.0/terminal-reports/date-range-summary")
+                .get(CustomProperties.getPropertyValue("apigatewayj") + "/api/v1.0/terminal-reports/date-range-summary")
                 .then()
                 .statusCode(HTTP_OK)
                 .extract().response();
