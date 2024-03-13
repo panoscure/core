@@ -29,6 +29,9 @@ public class Dbg {
     @SerializedName("creationTime")
     @Expose
     private String creationTime;
+    @SerializedName("updatedTime")
+    @Expose
+    private String updatedTime;
     @SerializedName("discount")
     @Expose
     private double discount;
@@ -56,6 +59,10 @@ public class Dbg {
     @SerializedName("selectionsType")
     @Expose
     private int selectionsType;
+    @SerializedName("wagerType")
+    @Expose
+    private int wagerType;
+
 
     public List<AddOn> getAddOn() {
         return addOn;
@@ -76,6 +83,14 @@ public class Dbg {
 
     public String getBlockStatus() {
         return blockStatus;
+    }
+
+    public int getWagerType() {
+        return wagerType;
+    }
+
+    public void setWagerType(int wagerType) {
+        this.wagerType = wagerType;
     }
 
     public void setBlockStatus(String blockStatus) {
@@ -132,6 +147,22 @@ public class Dbg {
 
     public Boolean getIsPrimary() {
         return isPrimary;
+    }
+
+    public String getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(String updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    public Boolean getPrimary() {
+        return isPrimary;
+    }
+
+    public void setPrimary(Boolean primary) {
+        isPrimary = primary;
     }
 
     public void setIsPrimary(Boolean isPrimary) {

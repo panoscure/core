@@ -3,9 +3,12 @@ package com.intralot.qa.automation.core.lottery.apigatewayj.models.draw.operatio
 
 import java.math.BigInteger;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class GetDrawV3_1Model {
 
     @SerializedName("gameId")

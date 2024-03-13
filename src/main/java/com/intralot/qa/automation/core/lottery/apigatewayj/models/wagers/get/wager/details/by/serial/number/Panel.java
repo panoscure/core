@@ -1,11 +1,13 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.serial.number;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Panel {
 
     @SerializedName("quickPick")
@@ -16,7 +18,7 @@ public class Panel {
     private Integer requested;
     @SerializedName("selection")
     @Expose
-    private List<Integer> selection = null;
+    private List<Integer> selection;
     @SerializedName("QPSelections")
     @Expose
     private Integer qPSelections;
@@ -52,5 +54,4 @@ public class Panel {
     public void setQPSelections(Integer qPSelections) {
         this.qPSelections = qPSelections;
     }
-
 }
