@@ -1,5 +1,6 @@
 package com.intralot.qa.automation.core.lottery.game.management;
 
+import com.intralot.qa.automation.core.utilities.CustomProperties;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 
@@ -12,7 +13,7 @@ public class MatchXPrograms {
         return given()
                 .accept(JSON)
                 .filters(new RequestLoggingFilter(), new ResponseLoggingFilter())
-                .get(System.getProperty("gamemanagement") + "/api/v1.0/program/{gameId}/{drawId}", gameId, drawId);
+                .get(CustomProperties.getPropertyValue("gamemanagement") + "/api/v1.0/program/{gameId}/{drawId}", gameId, drawId);
 
     }
 }
