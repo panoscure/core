@@ -1,6 +1,7 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.it.is.used.to.play.a.wager;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id.WagerOptions;
@@ -8,6 +9,7 @@ import com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wag
 import java.math.BigInteger;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Dbg {
 
     @SerializedName("addOn")
