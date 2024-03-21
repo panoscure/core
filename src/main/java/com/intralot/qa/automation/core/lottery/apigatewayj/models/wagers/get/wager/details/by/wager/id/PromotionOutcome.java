@@ -1,11 +1,13 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.math.BigInteger;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PromotionOutcome {
 
     @SerializedName("promotionId")

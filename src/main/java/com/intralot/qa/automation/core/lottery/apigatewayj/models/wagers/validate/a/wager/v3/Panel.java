@@ -1,9 +1,12 @@
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.validate.a.wager.v3;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Panel {
 
     @SerializedName("quickPick")

@@ -1,12 +1,14 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.validate.a.wager.v3;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.math.BigInteger;
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ValidateAWagerV3Model {
 
     @SerializedName("winnings")
