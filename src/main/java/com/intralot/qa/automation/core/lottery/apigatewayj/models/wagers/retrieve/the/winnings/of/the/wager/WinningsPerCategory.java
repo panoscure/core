@@ -29,6 +29,9 @@ public class WinningsPerCategory {
     @SerializedName("gameTypeId")
     @Expose
     private Integer gameTypeId;
+    @SerializedName("betTypeId")
+    @Expose
+    private Integer betTypeId;
 
     public CategoryAmounts getCategoryAmounts() {
         return categoryAmounts;
@@ -86,4 +89,10 @@ public class WinningsPerCategory {
         this.gameTypeId = gameTypeId;
     }
 
+    public Integer getBetTypeId() {
+        return betTypeId;
+    }
+    public void setBetTypeId(Integer betTypeId) {
+        this.betTypeId = betTypeId;
+    }
 }
