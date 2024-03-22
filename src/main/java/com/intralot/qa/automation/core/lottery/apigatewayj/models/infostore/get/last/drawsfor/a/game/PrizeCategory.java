@@ -35,6 +35,9 @@ public class PrizeCategory {
     @SerializedName("bonus")
     @Expose
     private Integer bonus;
+    @SerializedName("minimumDistributed")
+    @Expose
+    private Integer minimumDistributed;
 
     public Integer getId() {
         return id;
@@ -114,5 +117,13 @@ public class PrizeCategory {
 
     public void setBonus(Integer bonus) {
         this.bonus = bonus;
+    }
+
+    public Integer getMinimumDistributed() {
+        return minimumDistributed;
+    }
+
+    public void setMinimumDistributed(Integer minimumDistributed) {
+        this.minimumDistributed = minimumDistributed;
     }
 }
