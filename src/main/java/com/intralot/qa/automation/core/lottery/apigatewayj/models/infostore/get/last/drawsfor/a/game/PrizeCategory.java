@@ -32,6 +32,9 @@ public class PrizeCategory {
     @SerializedName("promotionId")
     @Expose
     private Integer promotionId;
+    @SerializedName("bonus")
+    @Expose
+    private Integer bonus;
 
     public Integer getId() {
         return id;
@@ -105,4 +108,11 @@ public class PrizeCategory {
         this.promotionId = promotionId;
     }
 
+    public Integer getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(Integer bonus) {
+        this.bonus = bonus;
+    }
 }
