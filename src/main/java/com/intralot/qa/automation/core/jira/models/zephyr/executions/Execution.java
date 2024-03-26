@@ -9,6 +9,9 @@ import com.google.gson.annotations.SerializedName;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Execution {
 
+    @JsonIgnore
+    private String assignedTo;
+
     @SerializedName("id")
     @Expose
     private Integer id;
