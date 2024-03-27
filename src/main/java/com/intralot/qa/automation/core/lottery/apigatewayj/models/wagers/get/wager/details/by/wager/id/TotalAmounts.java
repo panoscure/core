@@ -19,32 +19,32 @@ import com.fasterxml.jackson.annotation.*;
 public class TotalAmounts {
 
     @JsonProperty("gross")
-    private Integer gross;
+    private double gross;
     @JsonProperty("net")
-    private Integer net;
+    private double net;
     @JsonProperty("other")
-    private Integer other;
+    private double other;
     @JsonProperty("refund")
-    private Integer refund;
+    private double refund;
     @JsonProperty("tax")
-    private Integer tax;
+    private double tax;
     @JsonProperty("freeBet")
-    private Integer freeBet;
+    private double freeBet;
     @JsonIgnore
     private final Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     @JsonProperty("gross")
-    public Integer getGross() {
+    public double getGross() {
         return gross;
     }
 
     @JsonProperty("gross")
-    public void setGross(Integer gross) {
+    public void setGross(double gross) {
         this.gross = gross;
     }
 
     @JsonProperty("net")
-    public Integer getNet() {
+    public double getNet() {
         return net;
     }
 
@@ -54,37 +54,37 @@ public class TotalAmounts {
     }
 
     @JsonProperty("other")
-    public Integer getOther() {
+    public double getOther() {
         return other;
     }
 
     @JsonProperty("other")
-    public void setOther(Integer other) {
+    public void setOther(double other) {
         this.other = other;
     }
 
     @JsonProperty("refund")
-    public Integer getRefund() {
+    public double getRefund() {
         return refund;
     }
 
     @JsonProperty("refund")
-    public void setRefund(Integer refund) {
+    public void setRefund(double refund) {
         this.refund = refund;
     }
 
     @JsonProperty("tax")
-    public Integer getTax() {
+    public double getTax() {
         return tax;
     }
 
     @JsonProperty("tax")
-    public void setTax(Integer tax) {
+    public void setTax(double tax) {
         this.tax = tax;
     }
 
     @JsonProperty("freeBet")
-    public Integer getFreeBet() {
+    public double getFreeBet() {
         return freeBet;
     }
 
