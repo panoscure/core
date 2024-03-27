@@ -16,6 +16,9 @@ public class WagerStatistics {
     @SerializedName("addOn")
     @Expose
     private List<AddOn_> addOn = null;
+    @SerializedName("totalSales")
+    @Expose
+    private Integer totalSales;
 
     public Integer getColumns() {
         return columns;
@@ -41,4 +44,11 @@ public class WagerStatistics {
         this.addOn = addOn;
     }
 
+    public Integer getTotalSales() {
+        return totalSales;
+    }
+
+    public void setTotalSales(Integer totalSales) {
+        this.totalSales = totalSales;
+    }
 }

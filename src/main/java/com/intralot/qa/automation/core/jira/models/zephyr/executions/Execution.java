@@ -2,10 +2,16 @@ package com.intralot.qa.automation.core.jira.models.zephyr.executions;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Execution {
+
+    @SerializedName("assignedTo")
+    @JsonIgnore
+    private String assignedTo;
 
     @SerializedName("id")
     @Expose
@@ -447,6 +453,14 @@ public class Execution {
 
     public void setDefects(Object defects) {
         this.defects = defects;
+    }
+
+    public String getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(String assignedTo) {
+        this.assignedTo = assignedTo;
     }
 
     public String getExecutionEstimatedTime() {

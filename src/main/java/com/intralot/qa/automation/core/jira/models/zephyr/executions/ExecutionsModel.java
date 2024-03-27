@@ -2,10 +2,13 @@ package com.intralot.qa.automation.core.jira.models.zephyr.executions;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 
 public class ExecutionsModel {
 
