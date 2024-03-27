@@ -1,6 +1,7 @@
 
 package com.intralot.qa.automation.core.lottery.apigatewayj.models.wagers.get.wager.details.by.wager.id;
 
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,77 +20,77 @@ import com.fasterxml.jackson.annotation.*;
 public class TotalAmounts {
 
     @JsonProperty("gross")
-    private double gross;
+    private BigDecimal gross;
     @JsonProperty("net")
-    private double net;
+    private BigDecimal net;
     @JsonProperty("other")
-    private double other;
+    private BigDecimal other;
     @JsonProperty("refund")
-    private double refund;
+    private BigDecimal refund;
     @JsonProperty("tax")
-    private double tax;
+    private BigDecimal tax;
     @JsonProperty("freeBet")
-    private double freeBet;
+    private BigDecimal freeBet;
     @JsonIgnore
     private final Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     @JsonProperty("gross")
-    public double getGross() {
+    public BigDecimal getGross() {
         return gross;
     }
 
     @JsonProperty("gross")
-    public void setGross(double gross) {
+    public void setGross(BigDecimal gross) {
         this.gross = gross;
     }
 
     @JsonProperty("net")
-    public double getNet() {
+    public BigDecimal getNet() {
         return net;
     }
 
     @JsonProperty("net")
-    public void setNet(Integer net) {
+    public void setNet(BigDecimal net) {
         this.net = net;
     }
 
     @JsonProperty("other")
-    public double getOther() {
+    public BigDecimal getOther() {
         return other;
     }
 
     @JsonProperty("other")
-    public void setOther(double other) {
+    public void setOther(BigDecimal other) {
         this.other = other;
     }
 
     @JsonProperty("refund")
-    public double getRefund() {
+    public BigDecimal getRefund() {
         return refund;
     }
 
     @JsonProperty("refund")
-    public void setRefund(double refund) {
+    public void setRefund(BigDecimal refund) {
         this.refund = refund;
     }
 
     @JsonProperty("tax")
-    public double getTax() {
+    public BigDecimal getTax() {
         return tax;
     }
 
     @JsonProperty("tax")
-    public void setTax(double tax) {
+    public void setTax(BigDecimal tax) {
         this.tax = tax;
     }
 
     @JsonProperty("freeBet")
-    public double getFreeBet() {
+    public BigDecimal getFreeBet() {
         return freeBet;
     }
 
     @JsonProperty("freeBet")
-    public void setFreeBet(Integer freeBet) {
+    public void setFreeBet(BigDecimal freeBet) {
         this.freeBet = freeBet;
     }
 
