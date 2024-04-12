@@ -18,7 +18,7 @@
         <log4j-version>2.19.0</log4j-version>
         <commons-version>2.11.0</commons-version>
         <guava-version>31.1-jre</guava-version>
-        <webdrivermanager-version>5.7.0</webdrivermanager-version>
+        <webdrivermanager-version>5.8.0</webdrivermanager-version>
         <joda-time-version>2.10</joda-time-version>
         <testng-version>7.4.0</testng-version>
         <apache-commons-version>2.11.0</apache-commons-version>
