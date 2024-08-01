@@ -57,6 +57,7 @@ public class DriverFactory {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-web-security");
         options.addArguments("--allow-running-insecure-content");
+        options.addArguments("--disable-search-engine-choice-screen");
         options.setCapability(ChromeOptions.CAPABILITY, options);
         return options;
     }
@@ -112,7 +113,7 @@ public class DriverFactory {
         options.addArguments("--ignore-certificate-errors");
 //        options.addArguments("disable-translate");
         options.addArguments("--remote-allow-origins=*");
-
+        options.addArguments("--disable-search-engine-choice-screen");
 
         ChromeDriverService service = ChromeDriverService.createDefaultService();
 
