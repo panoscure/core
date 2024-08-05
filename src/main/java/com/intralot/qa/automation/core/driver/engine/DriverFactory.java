@@ -421,6 +421,7 @@ public class DriverFactory {
         chromeOptions.addArguments(new String[]{"--remote-allow-origins=*"});
         chromeOptions.addArguments(new String[]{"--disable-web-security"});
         chromeOptions.addArguments(new String[]{"--allow-running-insecure-content"});
+        chromeOptions.addArguments("--disable-search-engine-choice-screen");
 
         // start-maximized OR --window-size=1920,1080
         chromeOptions.addArguments(resolution);
