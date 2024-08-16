@@ -440,5 +440,38 @@ public class DriverFactory {
         chromeDriverBoni = new ChromeDriver(chromeOptions);
         return chromeDriverBoni;
     }
+    public static WebDriver initializeAndGetChromeDriverBoniForOPAP(String resolution, boolean certificate) {
+
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--start-maximized");
+        chromeOptions.addArguments("--incognito");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments(new String[]{"disable-infobars"});
+        chromeOptions.addArguments(new String[]{"--disable-extensions"});
+        chromeOptions.addArguments(new String[]{"--remote-allow-origins=*"});
+        chromeOptions.addArguments(new String[]{"--disable-web-security"});
+        chromeOptions.addArguments(new String[]{"--allow-running-insecure-content"});
+        chromeOptions.addArguments("--disable-search-engine-choice-screen");
+        chromeOptions.addArguments("--auto-open-devtools-for-tabs");
+
+
+        // start-maximized OR --window-size=1920,1080
+        chromeOptions.addArguments(resolution);
+
+        if (!certificate) {
+            chromeOptions.addArguments("--ignore-certificate-errors");
+        }
+
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable("browser", Level.ALL);
+        chromeOptions.setCapability("goog:loggingPrefs", logPrefs);
+
+        //  chromeOptions.addArguments(new String[]{"--disable-gpu"});
+        //  chromeOptions.addArguments(new String[]{"--disable-dev-shm-usage"});
+
+        chromeDriverBoni = new ChromeDriver(chromeOptions);
+        return chromeDriverBoni;
+    }
 
 }
