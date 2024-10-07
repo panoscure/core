@@ -50,6 +50,39 @@ public class CycleModel {
     @Expose
     private String startDate;
 
+    @SerializedName("errorDesc")
+    @Expose
+    private String errorDesc;
+
+    @SerializedName("modifiedByDisplay")
+    @Expose
+    private String modifiedByDisplay;
+
+    @SerializedName("createdByDisplay")
+    @Expose
+    private String createdByDisplay;
+
+    public String getCreatedByDisplay() {
+        return createdByDisplay;
+    }
+    public void setCreatedByDisplay(String createdByDisplay) {
+        this.createdByDisplay = createdByDisplay;
+    }
+    public String getModifiedByDisplay() {
+        return modifiedByDisplay;
+    }
+    public void setModifiedByDisplay(String modifiedByDisplay) {
+        this.modifiedByDisplay = modifiedByDisplay;
+    }
+
+    public String getErrorDescription() {
+        return errorDesc;
+    }
+
+    public void setErrorDescription(String errorDescription) {
+        this.errorDesc = errorDesc;
+    }
+
     public String getDescription() {
         return description;
     }

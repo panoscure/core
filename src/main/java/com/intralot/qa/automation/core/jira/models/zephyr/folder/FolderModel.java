@@ -49,6 +49,17 @@ public class FolderModel {
     @Expose
     private Boolean isTimeTrackingEnabled;
 
+    @SerializedName("projectName")
+    @Expose
+    private String projectName;
+
+    public String getProjectName() {
+        return projectName;
+    }
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
     public Integer getFolderId() {
         return folderId;
     }

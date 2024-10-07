@@ -48,6 +48,17 @@ public class JobProgressModel {
     @Expose
     private List<Object> stepMessages = null;
 
+    @SerializedName("zipped")
+    @Expose
+    private String zipped;
+
+    public String getZipped() {
+        return zipped;
+    }
+    public void setZipped(String zipped) {
+        this.zipped = zipped;
+    }
+
     public String getSummaryMessage() {
         return summaryMessage;
     }
